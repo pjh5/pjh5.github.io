@@ -224,18 +224,18 @@
       "longitude":"-95.370158"
     }
   },
-  {
-    "name":"Houston Area Urban League",
-    "type":"housing", 
-    "abbreviation":"",
-    "street_address":"1301 Texas Ave",
-    "phone":"(713) 718-3199",
-    "website":"</br><a href=\"http://www.haul.org\" target=\"_blank\">Haul.org</a>",
-    "location":{
-      "latitude":"29.758567",
-      "longitude":"-95.359540"
-    }
-  },
+  // {
+  //   "name":"Houston Area Urban League",
+  //   "type":"housing", 
+  //   "abbreviation":"",
+  //   "street_address":"1301 Texas Ave",
+  //   "phone":"(713) 718-3199",
+  //   "website":"</br><a href=\"http://www.haul.org\" target=\"_blank\">Haul.org</a>",
+  //   "location":{
+  //     "latitude":"29.758567",
+  //     "longitude":"-95.359540"
+  //   }
+  // },
   {
     "name":"The Beacon",
     "type":"all",
