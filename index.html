@@ -1,0 +1,77 @@
+<DOCTYPE html>
+<html ng-app="mapApp">
+<head>
+    <title>Homeless Resource Map</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <script src="js/fuse.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+
+    <script src="js/controllers.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Sniglet' rel='stylesheet' type='text/css'>
+</head>
+
+<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <p class="navbar-text" style="text-align:center; color:white; font-size:18px; font-family: 'Josefin Sans', sans-serif">Houston's Homeless Resource Map</p>
+    <p class="navbar-text navbar-right" style="text-align:right;color:white;font-size:18px; font-family: 'Josefin Sans', sans-serif">Made by DFA Rice</p>   
+  </div>
+</form>
+<br><br><br>
+
+<body ng-controller="SearchCtrl" ng-click="hideSearchResults($event)" ng-init="init()">
+    <div class="top-panel">
+        <!-- <button ng-click="toggleVisitorLots()" ng-class="{'pushed-button': visitorLotsShown}" class="btn btn-default visitor-lots-button" >
+            Filter Type
+        </button> -->
+
+        <button type="button" style="position:absolute; right:102px; top:0px; width:96px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Filter Type <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li ng-click = "showAll()"><a href="#">All</a></li>
+            <li ng-click = "showFood()"><a href="#">Food</a></li>
+            <li ng-click = "showHousing()"><a href="#">Housing</a></li>
+            <li ng-click = "showShelters()"><a href="#">Emergency Shelters</a></li>
+            <li ng-click = "showMedical()"><a href="#">Medical</a></li>
+            <li ng-click = "showJobs()"><a href="#">Job Training</a></li>
+            <li ng-click = "showW()"><a href="#">Women's Resources</a></li>
+            <li ng-click = "showVet()"><a href="#">Veteran Services</a></li>
+            <li ng-click = "showTech()"><a href="#">Public Library</a></li>
+            <li ng-click = "showT()"><a href="#">Transportation</a></li>
+
+            <!-- <li class="divider"></li>
+            <li><a href="#">Separated link</a></li> -->
+        </ul>
+
+        <button ng-click="showMyLocation()" class="btn btn-default my-loc-button" >
+            My Location
+        </button>
+        
+        <div class="search-box">
+            <i class="left-search-icon glyphicon glyphicon-search"></i>
+            <input id="searchBox" class="form-control search-box-input" ng-model="searchText" ng-keypress="buildingSelectedByKeyPress($event)" ng-focus="showSearchResults()" ng-blur="open == false">
+            <i ng-click="clearInput()" class="glyphicon glyphicon-remove clear-input-button"></i>
+        </div>
+
+        <div class="results">
+            <ul class="lookahead" ng-class="{shown: open, hidden: !open}">
+                <li class="lookahead-element" ng-class="{firstSearchResult: $first}" ng-repeat="result in searchResults | limitTo:4" require focus ng-click="focusBuilding(result)">
+                    <a href="">{{result.name}} {{result.abbreviation}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="map-canvas"></div>
+</body>
+</html>
