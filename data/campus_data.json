@@ -73,18 +73,18 @@
       "longitude":"-95.378951"
     }
   },
-  // {
-  //   "name":"Mental Health Mental Retardation Authority of Harris County",
-  //   "type":"medical", 
-  //   "abbreviation":"MHMRA",
-  //   "street_address":"7011 Southwest Freeway",
-  //   "phone":"(713) 970-7000",
-  //   "website":"</br><a href=\"http://www.mhmraharris.org\" target=\"_blank\">http://www.mhmraharris.org</a>",
-  //   "location":{
-  //     "latitude":"29.708272",
-  //     "longitude":"-95.507454"
-  //   }
-  // },
+  {
+    "name":"Mental Health Mental Retardation Authority of Harris County",
+    "type":"medical", 
+    "abbreviation":"MHMRA",
+    "street_address":"7011 Southwest Freeway",
+    "phone":"(713) 970-7000",
+    "website":"</br><a href=\"http://www.mhmraharris.org\" target=\"_blank\">http://www.mhmraharris.org</a>",
+    "location":{
+      "latitude":"29.708272",
+      "longitude":"-95.507454"
+    }
+  },
   {
     "name":"SEARCH",
     "type":"housing",

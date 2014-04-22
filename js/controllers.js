@@ -366,7 +366,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 mapElement.website + '</br>' + 
                 '<b>Hours: </b>' + mapElement.hours + '</br>' + 
                 mapElement.bus + 
-
                 '</div>';
             }
             else {
