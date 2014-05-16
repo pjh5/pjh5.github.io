@@ -1,26 +1,16 @@
 var mapApp = angular.module('mapApp', []);
-
+var directionsService;
+var directionsDisplay;
+var stepDisplay;
 mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     // init function for body.
-    $scope.init = function() {
+    directionsService = new google.maps.DirectionsService();
+
+    $scope.init = function(){
         initializeMap();
-
         // makes sure that the height is always equal to the height for the device.
-        $('body').css({"height":document.documentElnament.clientHeight});
+        $('body').css({"height":document.documentElement.clientHeight});
     };
-
-    // constants for bus icons
-    // var graduateApartmentsShoppingShuttleImage = "img/buses/Graduate Apartments Shopping Shuttle.png";
-    // var graduateApartmentsImage = "img/buses/Graduate Apartments.png";
-    // var greaterLoopImage = "img/buses/Greater Loop.png";
-    // var innerLoopImage = "img/buses/Inner Loop.png";
-    // var nightEscortServiceImage = "img/buses/Night Escort Service.png";
-    // var riceVillageImage = "img/buses/Rice Village.png";
-    // var riceVillageApartmentsImage = "img/buses/Rice Village Apartments.png";
-    // var undergraduateShoppingShuttleImage = "img/buses/Undergraduate Shopping Shuttle.png";
-
-    // array for bus markers
-    // var busMarkers = [];
 
     // elements on the map. Initialized using campus_data.json.
     var mapElements;
@@ -46,9 +36,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     // init the open status for the search results.
     $scope.open = true;
 
-    // init the list for bus data.
-    // $scope.buses = [];
-
     // function that clears input from input box and selects the input.
     $scope.clearInput = function() {
         $scope.searchText = "";
@@ -67,56 +54,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         }
     }
 
-    // function that gets called when the "Visitor Lots" button is pressed. Zooms out and shows available visitor lots.
-    // $scope.toggleVisitorLots = function() {
-    //     if ($scope.visitorLotsShown) {
-    //         removeAllMarkers();
-    //     }
-    //     else {
-    //         removeAllMarkers();
 
-    //         for (var i = 0; i < mapElements.length; i++) {
-    //             var mapElement = mapElements[i];
-    //             if (mapElement.type === "lot" && mapElement.visitor_parking > 0) {
-    //                 // case for class 1 (normal visitor parking lots).
-    //                 if (mapElement.visitor_parking === 1) {
-    //                     placeMarker(mapElement)
-    //                 }
-    //                 // case for class 2 (time-restricted visitor parking lots).
-    //                 else if (mapElement.visitor_parking === 2) {
-    //                     var currentDate = new Date();
-    //                     // logic for time-restricted visitor parking lots.
-    //                     if ((currentDate.getDay() === 0 || currentDate.getDay() === 6) || 
-    //                         (currentDate.getHours() > 17 || currentDate.getHours() < 8)) {
-    //                         placeMarker(mapElement);
-    //                     }
-    //                 }
-    //             }
-    //         }
 
-    //         // center the camera and zoom out.
-    //         map.panTo(mapCenter);
-    //         map.setZoom(15);
-
-    //         $scope.visitorLotsShown = true;
-    //     }
-    // };
-
-    // function that gets called when the My Location button is clicked, and show the user's locaiton on the map and pans to your location.
-    // $scope.showFood = function(){
-    //     var newMapElems = [];
-    //     var new_center = 0;
-    //     for (var i=0, size = mapElements.length; i < size; i++ ){
-    //         var mapElem = mapElements[i];
-    //         if (mapElem.type === 'food'){
-
-    //             placeMarker(mapElem);
-    //         } 
-
-    //     }
-    
-
-    // }
 
     $scope.showAll = function(){
         
@@ -358,24 +297,15 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 map: map,
                 title: mapElement.name
             });
-            if (mapElement.hours !== undefined && mapElement.bus !== undefined){
-                var contentString = '<div id="content">'+
-                '<b>' + mapElement.name + '</b></br>' + 
-                mapElement.street_address + '</br>' +
-                mapElement.phone + 
-                mapElement.website + '</br>' + 
-                '<b>Hours: </b>' + mapElement.hours + '</br>' + 
-                mapElement.bus + 
-                '</div>';
-            }
-            else {
-                var contentString = '<div id="content">'+
-                '<b>' + mapElement.name + '</b></br>' + 
-                mapElement.street_address + '</br>' +
-                mapElement.phone +
-                mapElement.website + 
-                '</div>';
-            }
+
+            var contentString = '<div id="content">'+
+            '<b>' + mapElement.name + '</b></br>' + 
+            mapElement.street_address + '</br>' +
+            mapElement.phone + 
+            mapElement.website + '</br>' + 
+            mapElement.hours + '</br>' + 
+            mapElement.bus + 
+            '</div>'; // Added content to info thing
             
             var infoWindow = new google.maps.InfoWindow({
                 content: contentString
@@ -392,7 +322,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         dictEntry.infoWindow.open(map, dictEntry.marker);
     };
 
-    // removes a marker on the map for a map element.
+
+
     var removeMarker = function(mapElement) {
         // check whether we've made the maker yet. If it exists, remove it.
         var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
@@ -430,78 +361,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         }
     });
     
-    // Function to update buses and pull's data every 5 seconds.
-    // (function tick() {
-    //     $http.get('http://rice-buses.herokuapp.com').success(function (data) {
-    //         $scope.buses = data.d;
-
-    //         // redraw the buses
-    //         redrawBuses();
-
-    //         $timeout(tick, 5000);
-    //     });
-    // })();
-
-    /**
-     * Redraws buses on map.
-     */
-    // function redrawBuses() {
-    //     // delete all the bus markers.
-    //     for (var i = 0; i < busMarkers.length; i++) {
-    //         busMarkers[i].setMap(null);
-    //     }
-    //     busMarkers = [];
-
-    //     // create all the bus markers.
-    //     for (var i = 0; i < $scope.buses.length; i++) {
-    //         var bus = $scope.buses[i];
-
-    //         // get the marker attributes.
-    //         var type = bus.Name;
-    //         var busLatLng = new google.maps.LatLng(bus.Latitude, bus.Longitude);
-    //         var image = "";
-
-
-    //         // get the right icon for the bus.
-    //         switch(type) {
-    //             case "Graduate Apartments":
-    //                 image = graduateApartmentsImage;
-    //                 break;
-    //             case "Graduate Apartments Shopping Shuttle":
-    //                 image = graduateApartmentsShoppingShuttleImage;
-    //                 break;
-    //             case "Greater Loop":
-    //                 image = greaterLoopImage;
-    //                 break;
-    //             case "Inner Loop":
-    //                 image = innerLoopImage;
-    //                 break;
-    //             case "Night Escort Service":
-    //                 image = nightEscortServiceImage;
-    //                 break;
-    //             case "Rice Village":
-    //                 image = riceVillageImage;
-    //                 break;
-    //             case "Rice Village Apartments":
-    //                 image = riceVillageApartmentsImage;
-    //                 break;
-    //             case "Undergraduate Shopping Shuttle":
-    //                 image = undergraduateShoppingShuttleImage;
-    //                 break;
-    //             default:
-    //                 image = innerLoopImage;
-    //         }
-
-    //         // create the marker and add it to the list of bus markers.
-    //         var busMarker = new google.maps.Marker({
-    //             position: busLatLng,
-    //             map: map,
-    //             icon: image
-    //         });
-
-    //         busMarkers.push(busMarker);
-    //     }
-    // }
+    
 
     /**
      * Add code for initializing the map.

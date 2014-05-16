@@ -11,6 +11,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 
+    <script src="js/jquery-1.11.js"></script> 
+    <script src="js/jquery.js"></script>
+
     <script src="js/controllers.js"></script>
 
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -26,15 +29,12 @@
     <p class="navbar-text navbar-right" style="text-align:right;color:white;font-size:18px; font-family: 'Josefin Sans', sans-serif">Made by DFA Rice</p>   
   </div>
 </form>
-<br><br><br>
+<br><br>
 
 <body ng-controller="SearchCtrl" ng-click="hideSearchResults($event)" ng-init="init()">
     <div class="top-panel">
-        <!-- <button ng-click="toggleVisitorLots()" ng-class="{'pushed-button': visitorLotsShown}" class="btn btn-default visitor-lots-button" >
-            Filter Type
-        </button> -->
 
-        <button type="button" style="position:absolute; right:102px; top:0px; width:96px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <button type="button" style="position:absolute; right:196px; width:96px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
             Filter Type <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
@@ -45,7 +45,7 @@
             <li ng-click = "showMedical()"><a href="#">Medical</a></li>
             <li ng-click = "showJobs()"><a href="#">Job Training</a></li>
             <li ng-click = "showW()"><a href="#">Women's Resources</a></li>
-            <li ng-click = "showVet()"><a href="#">Veteran Services</a></li>
+            <!-- <li ng-click = "showVet()"><a href="#">Veteran Services</a></li> -->
             <li ng-click = "showTech()"><a href="#">Public Library</a></li>
             <li ng-click = "showT()"><a href="#">Transportation</a></li>
 
@@ -53,8 +53,12 @@
             <li><a href="#">Separated link</a></li> -->
         </ul>
 
-        <button ng-click="showMyLocation()" class="btn btn-default my-loc-button" >
+        <button ng-click="showMyLocation()" class="btn btn-default my-loc-button" style="position:absolute; right:98px; width:96px">
             My Location
+        </button>
+
+        <button type="button" class="btn btn-default" style="position:absolute; right:0px; top:0px; width:96px">
+            Directions
         </button>
         
         <div class="search-box">
@@ -71,7 +75,7 @@
             </ul>
         </div>
     </div>
-
     <div id="map-canvas"></div>
+
 </body>
 </html>
