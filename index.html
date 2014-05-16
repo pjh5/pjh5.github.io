@@ -59,13 +59,13 @@
         
         <div class="search-box">
             <i class="left-search-icon glyphicon glyphicon-search"></i>
-            <input id="searchBox" class="form-control search-box-input" ng-model="searchText" ng-keypress="resourceSelectedByKeyPress($event)" ng-focus="showSearchResults()" ng-blur="open == false">
+            <input id="searchBox" class="form-control search-box-input" ng-model="searchText" ng-keypress="buildingSelectedByKeyPress($event)" ng-focus="showSearchResults()" ng-blur="open == false">
             <i ng-click="clearInput()" class="glyphicon glyphicon-remove clear-input-button"></i>
         </div>
 
         <div class="results">
             <ul class="lookahead" ng-class="{shown: open, hidden: !open}">
-                <li class="lookahead-element" ng-class="{firstSearchResult: $first}" ng-repeat="result in searchResults | limitTo:4" require focus ng-click="focusResource(result)">
+                <li class="lookahead-element" ng-class="{firstSearchResult: $first}" ng-repeat="result in searchResults | limitTo:4" require focus ng-click="focusBuilding(result)">
                     <a href="">{{result.name}} {{result.abbreviation}}</a>
                 </li>
             </ul>

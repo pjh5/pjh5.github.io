@@ -179,22 +179,21 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
     }
 
-// Currently no veteran resources are on the map
-    // $scope.showVet = function(){
-    //     removeAllMarkers()
-    //     var newMapElems = [];
-    //     var new_center = 0;
-    //     var bounds= new google.maps.LatLngBounds();
-    //     for (var i=0, size = mapElements.length; i < size; i++ ){
-    //         var mapElem = mapElements[i];
-    //         if (mapElem.type === 'veteran services'){
-    //             var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-    //             bounds.extend(latLng);
-    //             placeMarker(mapElem);
-    //         } 
+    $scope.showVet = function(){
+        removeAllMarkers()
+        var newMapElems = [];
+        var new_center = 0;
+        var bounds= new google.maps.LatLngBounds();
+        for (var i=0, size = mapElements.length; i < size; i++ ){
+            var mapElem = mapElements[i];
+            if (mapElem.type === 'veteran services'){
+                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
+                bounds.extend(latLng);
+                placeMarker(mapElem);
+            } 
 
-    //     }
-    //     map.fitBounds(bounds);
+        }
+        map.fitBounds(bounds);
 
     }
 
@@ -256,12 +255,12 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         });
     }
 
-    // event where a resource was selected by a keypress..
-    $scope.resourceSelectedByKeyPress = function(keyPressed) {
+    // event where a building was selected by a keypress..
+    $scope.buildingSelectedByKeyPress = function(keyPressed) {
         if (keyPressed.keyCode == 13 && $scope.searchResults.length > 0) {
-            // focus on the resource.
-            var resource = $scope.searchResults[0];
-            $scope.focusResource(resource);
+            // focus on the building.
+            var building = $scope.searchResults[0];
+            $scope.focusBuilding(building);
 
             // hide the search results. we have to emulate a clicked element here.
             $scope.hideSearchResults({target: {id: 'fakeElement'}});
@@ -271,8 +270,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         }
     }
 
-    // function for focusing on a resource.
-    $scope.focusResource = function(resource) {
+    // function for focusing on a building.
+    $scope.focusBuilding = function(building) {
         // hide keyboard so that the user will have a centered pin.
         $('searchBox').blur();
 
@@ -282,10 +281,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         $scope.searchText = "";
 
         // map.setZoom(5);
-        var latLng = new google.maps.LatLng(resource.location.latitude, resource.location.longitude);
+        var latLng = new google.maps.LatLng(building.location.latitude, building.location.longitude);
         map.panTo(latLng);
 
-        placeMarker(resource)
+        placeMarker(building)
     };
 
     // places a marker on the map for a map element.
