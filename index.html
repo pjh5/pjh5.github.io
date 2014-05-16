@@ -25,7 +25,7 @@
 
 <form class="navbar-form navbar-left" role="search">
   <div class="form-group">
-    <p class="navbar-text" style="text-align:center; color:white; font-size:18px; font-family: 'Josefin Sans', sans-serif">Houston's Homeless Resource Map</p>
+    <p class="navbar-text" style="text-align:center; color:white; font-size:18px; font-family: 'Josefin Sans', sans-serif">Houston Resource Map for Those Experience Homelessness</p>
     <p class="navbar-text navbar-right" style="text-align:right;color:white;font-size:18px; font-family: 'Josefin Sans', sans-serif">Made by DFA Rice</p>   
   </div>
 </form>
@@ -39,6 +39,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
             <li ng-click = "showAll()"><a href="#">All</a></li>
+            <li class="divider"></li>
             <li ng-click = "showFood()"><a href="#">Food</a></li>
             <li ng-click = "showHousing()"><a href="#">Housing</a></li>
             <li ng-click = "showShelters()"><a href="#">Emergency Shelters</a></li>
@@ -48,9 +49,6 @@
             <!-- <li ng-click = "showVet()"><a href="#">Veteran Services</a></li> -->
             <li ng-click = "showTech()"><a href="#">Public Library</a></li>
             <li ng-click = "showT()"><a href="#">Transportation</a></li>
-
-            <!-- <li class="divider"></li>
-            <li><a href="#">Separated link</a></li> -->
         </ul>
 
         <button ng-click="showMyLocation()" class="btn btn-default my-loc-button" style="position:absolute; right:0px; width:96px">
@@ -59,7 +57,7 @@
         
         <div class="search-box">
             <i class="left-search-icon glyphicon glyphicon-search"></i>
-            <input id="searchBox" class="form-control search-box-input" ng-model="searchText" ng-keypress="buildingSelectedByKeyPress($event)" ng-focus="showSearchResults()" ng-blur="open == false">
+            <input id="searchBox" class="form-control search-box-input" ng-model="searchText" ng-keypress="resourceSelectedByKeyPress($event)" ng-focus="showSearchResults()" ng-blur="open == false">
             <i ng-click="clearInput()" class="glyphicon glyphicon-remove clear-input-button"></i>
         </div>
 

@@ -256,7 +256,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     }
 
     // event where a building was selected by a keypress..
-    $scope.buildingSelectedByKeyPress = function(keyPressed) {
+    $scope.resourceSelectedByKeyPress = function(keyPressed) {
         if (keyPressed.keyCode == 13 && $scope.searchResults.length > 0) {
             // focus on the building.
             var building = $scope.searchResults[0];
