@@ -65,7 +65,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             placeMarker(mapElem);
            
             } 
-        closeAllInfoWindows();
         map.fitBounds(bounds);
     }
 
@@ -125,6 +124,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap(1);
 
     }
 
@@ -144,6 +144,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap(1);
 
     }
 
@@ -222,7 +223,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap(3);
+        zoomOutMap(4);
 
     }
 
@@ -242,7 +243,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap(3);
+        zoomOutMap(4);
 
     }
 
