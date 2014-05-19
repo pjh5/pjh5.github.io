@@ -27,9 +27,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     // init the lat/lng dictionary. Maps a latLng to various things.
     var latLngDict = {};
 
-    // boolean for whether the visitor lots are being shown.
-    $scope.visitorLotsShown = false;
-
     //init search results.
     $scope.searchResults = [];
 
@@ -190,6 +187,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
                 bounds.extend(latLng);
                 placeMarker(mapElem);
+
+
             } 
 
         }
