@@ -67,6 +67,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             } 
         closeAllInfoWindows();
         map.fitBounds(bounds);
+        zoomOutMap();
     }
 
     $scope.showFood = function(){
@@ -84,10 +85,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        var listener = google.maps.event.addListener(map, 'idle', function(){
-            map.setZoom(map.getZoom()-1);
-            google.maps.event.removeListener(listener)
-        });
+        zoomOutMap();
 
     }
 
@@ -106,6 +104,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap();
 
     }
     $scope.showShelters = function(){
@@ -123,6 +122,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap();
 
     }
 
@@ -141,6 +141,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap();
 
     }
 
@@ -159,6 +160,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap();
 
     }
 
@@ -177,6 +179,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap();
 
     }
 
@@ -191,13 +194,12 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
                 bounds.extend(latLng);
                 placeMarker(mapElem);
-
-
             } 
 
         }
         map.fitBounds(bounds);
-
+        zoomOutMap();
+        
     }
 
     $scope.showT = function(){
@@ -215,6 +217,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap();
 
     }
 
@@ -233,6 +236,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        zoomOutMap();
 
     }
 
@@ -416,6 +420,15 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             latLngDict[latLng].marker.setMap(null);
             delete latLngDict[latLng];
         }
+    }
+
+    /**
+     * Zooms out the map once
+      */
+    function zoomOutMap() {
+        var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
+            map.setZoom(map.getZoom()-1);
+        });
     }
  
 
