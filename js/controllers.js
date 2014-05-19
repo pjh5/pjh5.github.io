@@ -84,6 +84,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
+        map.setZoom(map.getZoom() - 1));
 
     }
 
