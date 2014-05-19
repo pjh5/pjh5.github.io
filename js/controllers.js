@@ -431,7 +431,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     /**
      * Zooms out the map once
       */
-    function zoomOutMap(var zoomLevel) {
+    function zoomOutMap(zoomLevel) {
         var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
             map.setZoom(map.getZoom() - zoomLevel);
         });
