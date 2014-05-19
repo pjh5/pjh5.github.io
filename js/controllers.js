@@ -372,6 +372,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDefaultUI: false,
           panControl: false,
+          mapTypeControl: false,
           zoomControl: true,
           zoomControlOptions: {
                 style: google.maps.ZoomControlStyle.LARGE,
