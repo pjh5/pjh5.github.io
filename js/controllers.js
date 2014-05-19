@@ -84,7 +84,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        map.setZoom(map.getZoom() - 1));
+        var listener = google.maps.event.addListener(map, 'idle', function(){
+            map.setZoom(map.getZoom()-1);
+            google.maps.event.removeListener(listener)
+        });
 
     }
 
