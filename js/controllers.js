@@ -67,9 +67,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             } 
         closeAllInfoWindows();
         map.fitBounds(bounds);
-        zoomOutMap();
     }
 
+    // Food
     $scope.showFood = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -85,10 +85,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
+        zoomOutMap(1);
 
     }
 
+    // Housing
     $scope.showHousing = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -104,9 +105,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
+        zoomOutMap(1);
 
     }
+
+    // Emergency Shelters
     $scope.showShelters = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -122,10 +125,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
 
     }
 
+    // Medical Resources
     $scope.showMedical = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -141,10 +144,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
 
     }
 
+    // Job Training
     $scope.showJobs = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -160,10 +163,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
+        zoomOutMap(1);
 
     }
 
+    // Women's Resources
     $scope.showW = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -179,10 +183,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
 
     }
 
+    // Veterans Resources
     $scope.showVet = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -198,10 +202,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
-        
+        zoomOutMap(1);
+
     }
 
+    // Transportation
     $scope.showT = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -217,10 +222,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
+        zoomOutMap(3);
 
     }
 
+    // Public library
     $scope.showTech = function(){
         removeAllMarkers()
         var newMapElems = [];
@@ -236,7 +242,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         }
         map.fitBounds(bounds);
-        zoomOutMap();
+        zoomOutMap(3);
 
     }
 
@@ -425,9 +431,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     /**
      * Zooms out the map once
       */
-    function zoomOutMap() {
+    function zoomOutMap(var zoomLevel) {
         var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            map.setZoom(map.getZoom()-1);
+            map.setZoom(map.getZoom() - zoomLevel);
         });
     }
  
