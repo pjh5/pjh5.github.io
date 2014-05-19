@@ -291,7 +291,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
         // first remove all markers.
         removeAllMarkers();
-
+		
+		// clear search bar
         $scope.searchText = "";
 
         // map.setZoom(5);
@@ -317,7 +318,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             mapElement.street_address + '</br>' +
             mapElement.phone + 
             mapElement.website + '</br>' + 
-            mapElement.hours + '</br>' + 
+            mapElement.hours +
             mapElement.bus + 
             '</div>'; // Added content to info thing
             
