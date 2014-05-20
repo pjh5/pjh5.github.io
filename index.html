@@ -35,15 +35,15 @@
     <div class="top-panel">
 
         <button type="button" style="position:absolute; right:82px; width:86px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Filter Type <span class="caret"></span>
+            Resources <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li ng-click = "showAll()"><a href="#">All</a></li>
+            <li ng-click = "showAll()"><a href="#">Show All</a></li>
             <li class="divider"></li>
             <li ng-click = "showFood()"><a href="#">Food</a></li>
             <li ng-click = "showHousing()"><a href="#">Housing</a></li>
             <li ng-click = "showShelters()"><a href="#">Emergency Shelters</a></li>
-            <li ng-click = "showMedical()"><a href="#">Medical</a></li>
+            <li ng-click = "showMedical()"><a href="#">Medical Resources</a></li>
             <li ng-click = "showJobs()"><a href="#">Job Training</a></li>
             <li ng-click = "showW()"><a href="#">Women's Resources</a></li>
             <li ng-click = "showTech()"><a href="#">Public Library</a></li>
@@ -56,14 +56,14 @@
         
         <div class="search-box">
             <i class="left-search-icon glyphicon glyphicon-search"></i>
-            <input id="searchBox" class="form-control search-box-input" ng-model="searchText" ng-keypress="resourceSelectedByKeyPress($event)" ng-focus="showSearchResults()" ng-blur="open == false">
+            <input id="searchBox" class="form-control search-box-input" placeholder="Search for resources by name or service" ng-model="searchText" ng-keypress="resourceSelectedByKeyPress($event)" ng-focus="showSearchResults()" ng-blur="open == false">
             <i ng-click="clearInput()" class="glyphicon glyphicon-remove clear-input-button"></i>
         </div>
 
         <div class="results">
             <ul class="lookahead" ng-class="{shown: open, hidden: !open}">
                 <li class="lookahead-element" ng-class="{firstSearchResult: $first}" ng-repeat="result in searchResults | limitTo:4" require focus ng-click="focusResource(result)">
-                    <a href="">{{result.name}}</a>
+                    <a href=""><b>{{ result.name }}</b> - {{ result.type }}</a>
                 </li>
             </ul>
         </div>
