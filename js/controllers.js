@@ -71,22 +71,17 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	}
 	
 	
-    $scope.showAll = function(withInfoWindow){
-		if (typeof withInfoWindow === 'undefined'){
-			withInfoWindow = true;
-		}
-        
+    $scope.showAll = function(){        
         var newMapElems = [];
         var bounds = new google.maps.LatLngBounds();
         for (var i=0, size = mapElements.length; i < size; i++ ){
             var mapElem = mapElements[i];
             var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
             bounds.extend(latLng);
-            placeMarker(mapElem, withInfoWindow);
+            placeMarker(mapElem, false);
            
             } 
         map.fitBounds(bounds);
-		zoomOutMap();
     }
 
 
@@ -257,7 +252,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         
         }
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            $scope.showAll(false);
+            $scope.showAll();
         });
     }
 
