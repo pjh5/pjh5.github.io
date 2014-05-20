@@ -291,8 +291,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	
-	$scope.glueToMap = function(latLng){
-		// var latLng = new google.maps.LatLng(latitude, longitude);
+	$scope.glueToMap = function(latLngStr){
+		latLngStr = latLngStr.split(", ");
+		var latitude = parseFloat(latLngStr[0].substr(1));
+		var longitude = parseFloat(latLngStr[1].substr(0,latLngStr[1].length));
+		var latLng = new google.maps.LatLng(latitude, longitude);
 		
 		delete latLngDict[latLng];
 		gluedMarkers.push(latLng);
