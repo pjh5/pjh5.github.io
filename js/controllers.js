@@ -176,8 +176,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.website + '</br>' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<button ng-click="glueToMap(' + latLng.toString() + ')" ' + 
-					'id="' + latLng.toString() + '" ' +
+			'<button ng-click="glueToMap(' + latLng + ')" ' + 
+					// 'id="' + latLng.toString() + '" ' +
 					'class="btn btn-default">' +
 			'Glue to Map</button>' +
 			'</div>'; // Added content to info thing
@@ -292,10 +292,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	$scope.glueToMap = function(latLngStr){
-		latLngStr = latLngStr.toString().split(", ");
-		var latitude = parseFloat(latLngStr[0].substr(1));
-		var longitude = parseFloat(latLngStr[1].substr(0,latLngStr[1].length));
-		var latLng = new google.maps.LatLng(latitude, longitude);
+		// latLngStr = latLngStr.toString().split(", ");
+		// var latitude = parseFloat(latLngStr[0].substr(1));
+		// var longitude = parseFloat(latLngStr[1].substr(0,latLngStr[1].length));
+		// var latLng = new google.maps.LatLng(latitude, longitude);
 		
 		delete latLngDict[latLng];
 		gluedMarkers.push(latLng);
