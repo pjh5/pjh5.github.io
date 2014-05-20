@@ -429,7 +429,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         
         }
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            showAll();
+            $scope.showAll();
         });
     }
 
