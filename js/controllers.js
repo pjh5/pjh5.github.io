@@ -71,7 +71,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	}
 	
 	
-    $scope.showAll = function(){        
+    $scope.showAll = function(){
+		removeAllMarkers();
         var newMapElems = [];
         var bounds = new google.maps.LatLngBounds();
         for (var i=0, size = mapElements.length; i < size; i++ ){
