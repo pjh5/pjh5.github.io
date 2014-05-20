@@ -291,14 +291,12 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	
-	$scope.glueToMap = function(id){
-	
-		// get element id somehow
+	$scope.glueToMap = function(latitude, longitude){
+		var latLng = new google.maps.LatLng(latitude, longitude);
 		
-		var infoWindow = google.maps.Map(document.getElementById(id));
-		var latLng = new google.maps.LatLng(infoWindow.location.latitude, infoWindow.location.longitude);
 		delete latLngDict[latLng];
 		gluedMarkers.push(latLng);
+		
 		
 		// change marker color
 		
