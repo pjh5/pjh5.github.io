@@ -151,24 +151,22 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 title: mapElement.name
             });
 			
-			if (typeof withInfoWindow === 'undefined' || withInfoWindow === true){
-				var contentString = '<div id="content">'+
-				'<b>' + mapElement.name + '</b></br>' + 
-				mapElement.street_address + '</br>' +
-				mapElement.phone + 
-				mapElement.website + '</br>' + 
-				mapElement.hours +
-				mapElement.bus + 
-				'<button ng-click="glueToMap(' + mapElement.name + ')" ' + 
-						'id="' + mapElement.name + '" ' +
-						'class="btn btn-default">' +
-				'Glue to Map</button>' +
-				'</div>'; // Added content to info thing
-				
-				var infoWindow = new google.maps.InfoWindow({
-					content: contentString
-				});
-			}
+			var contentString = '<div id="content">'+
+			'<b>' + mapElement.name + '</b></br>' + 
+			mapElement.street_address + '</br>' +
+			mapElement.phone + 
+			mapElement.website + '</br>' + 
+			mapElement.hours +
+			mapElement.bus + 
+			'<button ng-click="glueToMap(' + mapElement.name + ')" ' + 
+					'id="' + mapElement.name + '" ' +
+					'class="btn btn-default">' +
+			'Glue to Map</button>' +
+			'</div>'; // Added content to info thing
+			
+			var infoWindow = new google.maps.InfoWindow({
+				content: contentString
+			});
 
             // add entry to latLngDict.
             latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
@@ -178,7 +176,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             }); 
         }
         var dictEntry = latLngDict[latLng];
-        dictEntry.infoWindow.open(map, dictEntry.marker);
+		
+		if (typeof withInfoWindow === 'undefined' || withInfoWindow === true){
+			dictEntry.infoWindow.open(map, dictEntry.marker);
+		}
     };
 
 
