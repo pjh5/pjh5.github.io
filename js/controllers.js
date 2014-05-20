@@ -53,7 +53,24 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
 
 
-
+	$scope.showResources = function(resourceType){
+		removeAllMarkers();
+		var newMapElems = [];
+		var newCenter = 0;
+		var bounds = new google.maps.LatLngBounds();
+		for (var i=0; i < mapElements.length; i++){
+			var mapElem = mapElements[i];
+			if (mapElem.type === resourceType){
+				var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
+				bounds.extend(latLng);
+				placeMarker(mapElem);
+			}
+		}
+		map.fitBounds(bounds);
+		// zoomOutMap(resourceType);
+	}
+	
+	
     $scope.showAll = function(){
         
         var newMapElems = [];
@@ -320,7 +337,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             mapElement.website + '</br>' + 
             mapElement.hours +
             mapElement.bus + 
-			'<button class="btn btn-default" style="position:relative; left:50%">' +
+			'<button ng-click="glueToMap(' + mapElement.name + ')" ' + 
+					'id="' + mapElement.name + '" ' +
+					'class="btn btn-default">' +
 			'Glue to Map</button>' +
             '</div>'; // Added content to info thing
             
@@ -355,7 +374,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     $http.get('data/campus_data.json').then(function(result) {
         // set the fuse searcher.
         var options = {
-          keys: ['name', 'abbreviation']
+          keys: ['name', 'type']
         }
 
         searcher = new Fuse(result.data, options);
@@ -440,6 +459,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             map.setZoom(map.getZoom() - zoomLevel);
         });
     }
+	
+	function glueToMap(id) {
+		var latlng = new google.maps.MapTypeId
+	}
  
 
 });
