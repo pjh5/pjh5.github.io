@@ -71,7 +71,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	}
 	
 	
-    $scope.showAll = function(withInfoWindow = true){
+    $scope.showAll = function(withInfoWindow){
         
         var newMapElems = [];
         var bounds = new google.maps.LatLngBounds();
@@ -83,6 +83,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
            
             } 
         map.fitBounds(bounds);
+		zoomOutMap();
     }
 
 
@@ -281,11 +282,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     /**
      * Zooms out the map after a filter function
       */
-    function zoomOutMap(resourceType) {
+    function zoomOutMap(resource) {
 		
 		// Sets zoom level depending on resource type
 		var zoomLevel = 1;
-		if (resourceType === 'Library' || resourceType === 'Transportation'){
+		if (typeof resource === 'undefined' || resource === 'Library' || resource === 'Transportation'){
 			zoomLevel = 5;
 		}
 			
