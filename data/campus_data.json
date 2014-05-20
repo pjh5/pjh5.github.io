@@ -30,7 +30,7 @@
     "type":"youth",
     "street_address":"1111 Lovett Blvd",
     "hours":"</br><b>Hours: </b>24/7</br>",
-    "bus":"METRO BUS 42, 81, 82, 36",
+    "bus":"METRO BUS 42, 81, 82, 36</br>",
     "phone":"(713) 523-2231",
     "website":"</br><a href=\"www.covenanthousetx.org/\" target=\"_blank\">www.covenanthousetx.org/</a>",
     "location":{
@@ -81,7 +81,7 @@
     "name":"SEARCH",
     "type":"housing",
     "street_address":"2505 Fanin",
-    "hours":"</br><b>Hours: </b>Mon-Fri 8-4pm</br>",
+    "hours":"</br><b>Hours: </b>Mon-Fri 8-4pm</br></br>",
     "bus":"",
     "phone":"(713) 739-7752",
     "website":"</br><a href=\"www.searchhomeless.org\" target=\"_blank\">www.searchhomeless.org</a>",
@@ -134,7 +134,7 @@
     "type":"womens",
     "street_address":"1603 McGowen",
     "hours":"</br><b>Hours: </b>Mon-Fri 8-4:30pm</br>",
-    "bus":"METRO BUS 52",
+    "bus":"METRO BUS 52</br>",
     "phone":"(713) 650-6530",
     "website":"</br><a href=\"www.salvationarmyhouston.org/familyresidence\" target=\"_blank\">www.salvationarmyhouston.org/familyresidence</a>",
     "location":{
@@ -160,7 +160,7 @@
     "type":"shelter",
     "street_address":"2407 Main Street",
     "hours":"</br><b>Hours: </b>Mon-Fri 8-4:30pm</br>",
-    "bus":"METRO RAIL",
+    "bus":"METRO RAIL</br>",
     "phone":"713.224.2875",
     "website":"</br><a href=\"www.salvationarmyhouston.org/harborlight\" target=\"_blank\">www.salvationarmyhouston.org/harborlight</a>",
     "location":{
@@ -240,7 +240,7 @@
     "type":"all",
     "street_address":"1212 Prairie Street",
     "hours":"</br><b>Hours: </b>Thur-Mon 7-3pm</br>",
-    "bus":"METRO BUS 37,48, 11, 20, 30, 52, 77, 80; METRO RAIL",
+    "bus":"METRO BUS 37,48, 11, 20, 30, 52, 77, 80; METRO RAIL</br>",
     "phone":"(713) 220-9737",
     "website":"</br><a href=\"http://www.chomhouston.org/default.aspx?name=chom.thebeacon\" target=\"_blank\">http://www.chomhouston.org/default.aspx?name=chom.thebeacon</a>",
     "location":{
@@ -253,7 +253,7 @@
     "type":"income",
     "street_address":"1418 Preston Street",
     "hours":"</br><b>Hours: </b>Mon 8-2:30pm</br>Tue-Fri 8-5pm</br>Sat 8-4pm</br>Sun 9-4pm</br>",
-    "bus":"METRO BUS 37, 48, 11, 20, 30, 52, 77, 80; METRO RAIL",
+    "bus":"METRO BUS 37, 48, 11, 20, 30, 52, 77, 80; METRO RAIL</br>",
     "phone":"(713) 229-8122",
     "website":"", 
     "location":{
@@ -265,7 +265,7 @@
     "name":"US Vets Initiative",
     "type":"income",
     "street_address":"1418 Preston Street",
-    "hours":"</br><b>Hours: </b>24/7</br>",
+    "hours":"</br><b>Hours: </b>24/7</br></br>",
     "bus":"",
     "phone":"(713) 204-1838",
     "website":"</br><a href=\"http://www.usvetsinc.org/houston\" target=\"_blank\">http://www.usvetsinc.org/houston</a>",
@@ -293,7 +293,7 @@
     "type":"shelter",
     "street_address":"1811 Ruiz Street",
     "hours":"</br><b>Hours: </b>Mon-Sat 8-11am, 1-3pm; Sun 9-12pm, 1-3pm</br>",
-    "bus":"METRO BUS 3, 6, 11",
+    "bus":"METRO BUS 3, 6, 11</br>",
     "phone":"(713) 227-8900",
     "website":"</br><a href=\"http://www.sohmission.org/NetCommunity/services-for-men\" target=\"_blank\">SOHMission.org/NetCommunity/services-for-men</a>",
     "location":{
@@ -346,7 +346,7 @@
     "type":"shelter",
     "street_address":"419 Dowling",
     "hours":"</br><b>Hours: </b>Intake 8:30-2:30pm</br>",
-    "bus":"METRO BUS 50",
+    "bus":"METRO BUS 50</br>",
     "phone":"(713) 222-2220",
     "website":"</br><a href=\"http://www.sohmission.org/NetCommunity/wf-intake\" target=\"_blank\">http://www.sohmission.org/NetCommunity/wf-intake</a>",
     "location":{

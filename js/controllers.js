@@ -320,7 +320,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             mapElement.website + '</br>' + 
             mapElement.hours +
             mapElement.bus + 
-			'<button class="btn btn-default">Glue to Map</button>' +
+			'<button class="btn btn-default" style="position:relative; left:50%">' +
+			'Glue to Map</button>' +
             '</div>'; // Added content to info thing
             
             var infoWindow = new google.maps.InfoWindow({
