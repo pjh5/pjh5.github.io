@@ -71,7 +71,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	}
 	
 	
-    $scope.showAll = function(){
+    $scope.showAll = function(withInfoWindow = true){
         
         var newMapElems = [];
         var bounds = new google.maps.LatLngBounds();
@@ -79,7 +79,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             var mapElem = mapElements[i];
             var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
             bounds.extend(latLng);
-            placeMarker(mapElem);
+            placeMarker(mapElem, withInfoWindow);
            
             } 
         map.fitBounds(bounds);
@@ -320,7 +320,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     };
 
     // places a marker on the map for a map element.
-    function placeMarker(mapElement) {
+    function placeMarker(mapElement, withInfoWindow = true) {
         // check whether we've made the maker yet. If not, make it.
         var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
         if (!(latLng in latLngDict)) {
@@ -329,23 +329,25 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 map: map,
                 title: mapElement.name
             });
-
-            var contentString = '<div id="content">'+
-            '<b>' + mapElement.name + '</b></br>' + 
-            mapElement.street_address + '</br>' +
-            mapElement.phone + 
-            mapElement.website + '</br>' + 
-            mapElement.hours +
-            mapElement.bus + 
-			'<button ng-click="glueToMap(' + mapElement.name + ')" ' + 
-					'id="' + mapElement.name + '" ' +
-					'class="btn btn-default">' +
-			'Glue to Map</button>' +
-            '</div>'; // Added content to info thing
-            
-            var infoWindow = new google.maps.InfoWindow({
-                content: contentString
-            });
+			
+			if (withInfoWindow){
+				var contentString = '<div id="content">'+
+				'<b>' + mapElement.name + '</b></br>' + 
+				mapElement.street_address + '</br>' +
+				mapElement.phone + 
+				mapElement.website + '</br>' + 
+				mapElement.hours +
+				mapElement.bus + 
+				'<button ng-click="glueToMap(' + mapElement.name + ')" ' + 
+						'id="' + mapElement.name + '" ' +
+						'class="btn btn-default">' +
+				'Glue to Map</button>' +
+				'</div>'; // Added content to info thing
+				
+				var infoWindow = new google.maps.InfoWindow({
+					content: contentString
+				});
+			}
 
             // add entry to latLngDict.
             latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
@@ -429,7 +431,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         
         }
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            $scope.showAll();
+            $scope.showAll(false);
         });
     }
 
