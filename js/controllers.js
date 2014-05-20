@@ -428,7 +428,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             marker.setMap(map);
         
         }
-		$scope.showAll();
+		showAll();
     }
 
     /**
