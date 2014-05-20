@@ -72,7 +72,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
     $scope.showAll = function(withInfoWindow){
-		if (typeof withInfoWindow === 'undefined') withInfoWindow = true;
+		if (typeof withInfoWindow === 'undefined') {withInfoWindow = true;}
         
         var newMapElems = [];
         var bounds = new google.maps.LatLngBounds();
