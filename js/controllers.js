@@ -428,7 +428,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             marker.setMap(map);
         
         }
-		showAll();
+		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
+            showAll();
+        });
     }
 
     /**
