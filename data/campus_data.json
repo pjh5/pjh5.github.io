@@ -1,7 +1,7 @@
 [
   {
     "name":"Lord of the Streets",
-    "type":"food",
+    "type":"Food",
     "street_address":"3401 Fannin",
     "hours":"",
     "bus":"",
@@ -14,7 +14,7 @@
   },
   {
     "name":"Legacy Community Health Service",
-    "type":"medical",
+    "type":"Medical",
     "street_address":"215 Westheimer Rd",
     "hours":"",
     "bus":"",
@@ -27,7 +27,7 @@
   },
   {
     "name":"Covenant House",
-    "type":"youth",
+    "type":"Youth",
     "street_address":"1111 Lovett Blvd",
     "hours":"</br><b>Hours: </b>24/7</br>",
     "bus":"METRO BUS 42, 81, 82, 36</br>",
@@ -40,7 +40,7 @@
   },
   {
     "name":"Interfaith Ministries for Greater Houston",
-    "type":"food",
+    "type":"Food",
     "street_address":"3303 Main Street",
     "hours":"",
     "bus":"",
@@ -53,7 +53,7 @@
   },
   {
     "name":"Magnificat Clubhouse",
-    "type":"mentally disabled services",
+    "type":"Mentally Disabled Services",
     "street_address":"3307 Austin",
     "hours":"",
     "bus":"",
@@ -66,7 +66,7 @@
   },
   {
     "name":"Catholic Charities",
-    "type":"food",
+    "type":"Food",
     "street_address":"2900 Louisiana Street",
     "hours":"",
     "bus":"",
@@ -79,7 +79,7 @@
   },
   {
     "name":"SEARCH",
-    "type":"housing",
+    "type":"Housing",
     "street_address":"2505 Fanin",
     "hours":"</br><b>Hours: </b>Mon-Fri 8-4pm</br></br>",
     "bus":"",
@@ -92,7 +92,7 @@
   },
   {
     "name":"Career and Recovery Resources",
-    "type":"income",
+    "type":"Income",
     "street_address":"2525 San Jacinto",
     "hours":"",
     "bus":"",
@@ -105,7 +105,7 @@
   },
   {
     "name":"Bristow Center",
-    "type":"medical", 
+    "type":"Medical", 
     "street_address":"2627 Caroline",
     "hours":"",
     "bus":"",
@@ -118,7 +118,7 @@
   },
   {
     "name":"Houston Area Women's Center",
-    "type":"womens",
+    "type":"Women's Resources",
     "street_address":"1010 Waugh Dr",
     "hours":"",
     "bus":"",
@@ -131,7 +131,7 @@
   },
   {
     "name":"Salvation Army Women and Family",
-    "type":"womens",
+    "type":"Women's Resources",
     "street_address":"1603 McGowen",
     "hours":"</br><b>Hours: </b>Mon-Fri 8-4:30pm</br>",
     "bus":"METRO BUS 52</br>",
@@ -144,7 +144,7 @@
   },
   {
     "name":"Salvation Army Social Services",
-    "type":"social services",
+    "type":"Social Services",
     "street_address":"2208 Main Street",
     "hours":"",
     "bus":"",
@@ -157,7 +157,7 @@
   },
   {
     "name":"Salvation Army Harbor Light",
-    "type":"shelter",
+    "type":"Emergency Shelter",
     "street_address":"2407 Main Street",
     "hours":"</br><b>Hours: </b>Mon-Fri 8-4:30pm</br>",
     "bus":"METRO RAIL</br>",
@@ -170,7 +170,7 @@
   },
   {
     "name":"Metro Ride Store",
-    "type":"transportation",
+    "type":"Transportation",
     "street_address":"1900 Main Street",
     "hours":"",
     "bus":"",
@@ -184,7 +184,7 @@
   
   {
     "name":"Temenos",
-    "type":"housing",
+    "type":"Housing",
     "street_address":"2019 Crawford Street, Ste. 216",
     "hours":"",
     "bus":"",
@@ -211,7 +211,7 @@
   },
   {
     "name":"Houston Public Library",
-    "type":"tech",
+    "type":"Library",
     "street_address":"500 McKinney",
     "hours":"",
     "bus":"",
@@ -224,7 +224,7 @@
   },
   {
     "name":"Houston Area Urban League",
-    "type":"housing",
+    "type":"Housing",
     "street_address":"1301 Texas Ave",
     "hours":"",
     "bus":"",
@@ -250,7 +250,7 @@
   },
   {
     "name":"US Vets at the DeGeorge",
-    "type":"income",
+    "type":"Income",
     "street_address":"1418 Preston Street",
     "hours":"</br><b>Hours: </b>Mon 8-2:30pm</br>Tue-Fri 8-5pm</br>Sat 8-4pm</br>Sun 9-4pm</br>",
     "bus":"METRO BUS 37, 48, 11, 20, 30, 52, 77, 80; METRO RAIL</br>",
@@ -263,7 +263,7 @@
   },
   {
     "name":"US Vets Initiative",
-    "type":"income",
+    "type":"Income",
     "street_address":"1418 Preston Street",
     "hours":"</br><b>Hours: </b>24/7</br></br>",
     "bus":"",
@@ -277,12 +277,12 @@
   
   {
     "name":"New Hope Housing",
-    "type":"housing",
+    "type":"Housing",
     "street_address":"1414 Congress",
     "hours":"",
     "bus":"",
     "phone":"(713) 224-1414",
-    "website":"</br><a href=\"http://www.newhopehousing.com/about.html\" target=\"_blank\">NewHopeHousing.com/about.html</a>",
+    "website":"</br><a href=\"http://www.newhopeHousing.com/about.html\" target=\"_blank\">NewHopeHousing.com/about.html</a>",
     "location":{
       "latitude":"29.759787",
       "longitude":"-95.356969"
@@ -290,7 +290,7 @@
   },
   {
     "name":"Star of Hope Mission (Men)",
-    "type":"shelter",
+    "type":"Emergency Shelter",
     "street_address":"1811 Ruiz Street",
     "hours":"</br><b>Hours: </b>Mon-Sat 8-11am, 1-3pm; Sun 9-12pm, 1-3pm</br>",
     "bus":"METRO BUS 3, 6, 11</br>",
@@ -303,7 +303,7 @@
   },
   {
     "name":"Loaves & Fishes",
-    "type":"food",
+    "type":"Food",
     "street_address":"2009 Congress Street",
     "hours":"",
     "bus":"",
@@ -316,7 +316,7 @@
   },
   {
     "name":"Sally's House",
-    "type":"womens",
+    "type":"Women's Resources",
     "street_address":"1717 Congress",
     "hours":"",
     "bus":"",
@@ -329,7 +329,7 @@
   },
   {
     "name":"San Jose Clinic",
-    "type":"medical",
+    "type":"Medical",
     "street_address":"301 Hamilton Street",
     "hours":"",
     "bus":"",
@@ -343,7 +343,7 @@
   
   {
     "name":"Star of Hope (Women and families)",
-    "type":"shelter",
+    "type":"Emergency Shelter",
     "street_address":"419 Dowling",
     "hours":"</br><b>Hours: </b>Intake 8:30-2:30pm</br>",
     "bus":"METRO BUS 50</br>",
@@ -357,7 +357,7 @@
   
   {
     "name":"Martha's Kitchen",
-    "type":"food",
+    "type":"Food",
     "street_address":"322 S. Jensen",
     "hours":"",
     "bus":"",

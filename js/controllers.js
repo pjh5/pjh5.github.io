@@ -320,7 +320,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     };
 
     // places a marker on the map for a map element.
-    function placeMarker(mapElement, withInfoWindow = true) {
+    function placeMarker(mapElement, withInfoWindow) {
         // check whether we've made the maker yet. If not, make it.
         var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
         if (!(latLng in latLngDict)) {
@@ -330,7 +330,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 title: mapElement.name
             });
 			
-			if (withInfoWindow){
+			if (typeof withInfoWindow === 'undefined' || withInfoWindow === true){
 				var contentString = '<div id="content">'+
 				'<b>' + mapElement.name + '</b></br>' + 
 				mapElement.street_address + '</br>' +
