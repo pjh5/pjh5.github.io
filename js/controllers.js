@@ -26,6 +26,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
     // init the lat/lng dictionary. Maps a latLng to various things.
     var latLngDict = {};
+	var gluedMarkers = {};
 
     //init search results.
     $scope.searchResults = [];
@@ -84,7 +85,23 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             } 
         map.fitBounds(bounds);
     }
-
+	
+	
+    /**
+     * Zooms out the map after a filter function
+      */
+    function zoomOutMap(resource) {
+		
+		// Sets zoom level depending on resource type
+		var zoomLevel = 1;
+		if ((typeof resource !== 'undefined') && (resource === 'Library' || resource === 'Transportation')){
+			zoomLevel = 5;
+		}
+			
+        var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
+            map.setZoom(map.getZoom() - zoomLevel);
+        });
+    }
 
     $scope.showMyLocation = function() {
         //Makes the marker to show where you are.
@@ -159,8 +176,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.website + '</br>' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<button ng-click="glueToMap(' + mapElement.name + ')" ' + 
-					'id="' + mapElement.name + '" ' +
+			'<button ng-click="glueToMap(' + latLng.toString() + ')" ' + 
+					'id="' + latLng.toString() + '" ' +
 					'class="btn btn-default">' +
 			'Glue to Map</button>' +
 			'</div>'; // Added content to info thing
@@ -258,14 +275,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         });
     }
 
-    /**
-     * Closes all info windows on the map.
-     */
-    function closeAllInfoWindows() {
-        for (var latLng in latLngDict) {
-            latLngDict[latLng].infoWindow.close();
-        }
-    }
 
     /**
      * Removes all markers from the map.
@@ -278,26 +287,25 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             delete latLngDict[latLng];
         }
     }
-
-    /**
-     * Zooms out the map after a filter function
-      */
-    function zoomOutMap(resource) {
-		
-		// Sets zoom level depending on resource type
-		var zoomLevel = 1;
-		if ((typeof resource !== 'undefined') && (resource === 'Library' || resource === 'Transportation')){
-			zoomLevel = 5;
-		}
-			
-        var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            map.setZoom(map.getZoom() - zoomLevel);
-        });
-    }
 	
-	function glueToMap(id) {
-		var latlng = new google.maps.MapTypeId
+	
+	
+	
+	$scope.glueToMap = function(id){
+	
+		// get element id somehow
+		
+		var infoWindow = google.maps.Map(document.getElementById(id));
+		var latLng = new google.maps.LatLng(infoWindow.location.latitude, infoWindow.location.longitude);
+		delete latLngDict[latLng];
+		gluedMarkers.push(latLng);
+		
+		// change marker color
+		
+		
 	}
+
+
  
 
 });
