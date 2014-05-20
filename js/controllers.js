@@ -292,9 +292,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	$scope.glueToMap = function(latLngStr){
-		latLngStr = latLngStr.toString().split(", ");
-		var latitude = parseFloat(latLngStr[0].substr(1));
-		var longitude = parseFloat(latLngStr[1].substr(0,latLngStr[1].length));
+		latLngArray = latLngStr.split(", ");
+		var latitude = parseFloat(latLngArray[0].substr(1));
+		var longitude = parseFloat(latLngArray[1].substr(0,latLngArray[1].length-1));
 		var latLng = new google.maps.LatLng(latitude, longitude);
 		
 		delete latLngDict[latLng];
