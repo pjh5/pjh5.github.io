@@ -52,7 +52,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     }
 
 
-
+	// Called when a resource type in the Resources dropdown is clicked
 	$scope.showResources = function(resourceType){
 		removeAllMarkers();
 		var newMapElems = [];
@@ -67,7 +67,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			}
 		}
 		map.fitBounds(bounds);
-		// zoomOutMap(resourceType);
+		zoomOutMap(resourceType);
 	}
 	
 	
@@ -85,184 +85,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         map.fitBounds(bounds);
     }
 
-    // Food
-    $scope.showFood = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'food'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(1);
-
-    }
-
-    // Housing
-    $scope.showHousing = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'housing'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(1);
-
-    }
-
-    // Emergency Shelters
-    $scope.showShelters = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'shelter'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(1);
-
-    }
-
-    // Medical Resources
-    $scope.showMedical = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'medical'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(1);
-
-    }
-
-    // Job Training
-    $scope.showJobs = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'income'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(1);
-
-    }
-
-    // Women's Resources
-    $scope.showW = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'womens'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-
-    }
-
-    // Veterans Resources
-    $scope.showVet = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'veteran services'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(1);
-
-    }
-
-    // Transportation
-    $scope.showT = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'transportation'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(4);
-
-    }
-
-    // Public library
-    $scope.showTech = function(){
-        removeAllMarkers()
-        var newMapElems = [];
-        var new_center = 0;
-        var bounds= new google.maps.LatLngBounds();
-        for (var i=0, size = mapElements.length; i < size; i++ ){
-            var mapElem = mapElements[i];
-            if (mapElem.type === 'tech'){
-                var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
-                bounds.extend(latLng);
-                placeMarker(mapElem);
-            } 
-
-        }
-        map.fitBounds(bounds);
-        zoomOutMap(4);
-
-    }
 
     $scope.showMyLocation = function() {
         //Makes the marker to show where you are.
@@ -457,9 +279,16 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     }
 
     /**
-     * Zooms out the map once
+     * Zooms out the map after a filter function
       */
-    function zoomOutMap(zoomLevel) {
+    function zoomOutMap(resourceType) {
+		
+		// Sets zoom level depending on resource type
+		var zoomLevel = 1;
+		if (resourceType === 'Library' || resourceType === 'Transportation'){
+			zoomLevel = 5;
+		}
+			
         var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
             map.setZoom(map.getZoom() - zoomLevel);
         });
