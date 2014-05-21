@@ -61,7 +61,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 		var bounds = new google.maps.LatLngBounds();
 		for (var i=0; i < mapElements.length; i++){
 			var mapElem = mapElements[i];
-			if (~mapElem.type.indexOf(resourceTpe)){
+			if (mapElem.type.indexOf(resourceType)){
 				var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
 				bounds.extend(latLng);
 				placeMarker(mapElem);
