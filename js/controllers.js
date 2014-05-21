@@ -176,7 +176,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.website + '</br>' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<button ng-click="glueToMap(id)" ' + 
+			'<button ng-click="zoomOutMap(\'undefined\')" ' + 
 					'id="' + latLng.toString() + '" ' +
 					'class="btn btn-default">' +
 			'Glue to Map</button>' +
@@ -292,7 +292,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	$scope.glueToMap = function(latLngStr){
-		zoomOutMap();
+		zoomOutMap('undefined');
 	
 		latLngArray = latLngStr.split(", ");
 		var latitude = parseFloat(latLngArray[0].substr(1));
