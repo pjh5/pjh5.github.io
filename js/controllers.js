@@ -217,7 +217,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         // set the fuse searcher.
         var options = {
           keys: ['name', 'type'],
-		  threshold: 0.5
+		  threshold: 0.25
         }
 
         searcher = new Fuse(result.data, options);
