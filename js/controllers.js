@@ -178,7 +178,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.bus + 
 			'<button ng-click="showMyLocation()" ' + 
 					// 'id="' + latLng.toString() + '" ' +
-					'class="btn btn-default">' +
+					'class="btn btn-default my-loc-button">' +
 			'Glue to Map</button>' +
 			'</div>'; // Added content to info thing
 			
