@@ -169,7 +169,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 title: mapElement.name
             });
 			
-			var contentString = '<div id="content">'+
+			var contentString = '<div>'+
 			'<b>' + mapElement.name + '</b></br>' + 
 			mapElement.street_address + '</br>' +
 			mapElement.phone + 
@@ -178,7 +178,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.bus + 
 			'<button ng-click="showMyLocation()" ' + 
 					// 'id="' + latLng.toString() + '" ' +
-					'class="btn btn-default my-loc-button">' +
+					'class="btn btn-default">' +
 			'Glue to Map</button>' +
 			'</div>'; // Added content to info thing
 			
