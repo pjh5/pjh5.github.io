@@ -176,7 +176,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.website + '</br>' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<button ng-click="zoomOutMap(\'undefined\')" ' + 
+			'<button ng-click="showAll()" ' + 
 					'id="' + latLng.toString() + '" ' +
 					'class="btn btn-default">' +
 			'Glue to Map</button>' +
