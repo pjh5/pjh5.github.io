@@ -169,7 +169,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
                 title: mapElement.name
             });
 			
-			var contentString = '<div>'+
+			var contentString = '<div id="' + mapElement.name.replace(/\s+/g, '') + '">'+
 			'<b>' + mapElement.name + '</b><br />' + 
 			mapElement.street_address + '<br />' +
 			mapElement.phone + 
