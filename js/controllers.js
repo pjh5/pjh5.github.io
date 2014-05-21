@@ -170,10 +170,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             });
 			
 			var contentString = '<div>'+
-			'<b>' + mapElement.name + '</b></br>' + 
-			mapElement.street_address + '</br>' +
+			'<b>' + mapElement.name + '</b><br />' + 
+			mapElement.street_address + '<br />' +
 			mapElement.phone + 
-			mapElement.website + '</br>' + 
+			mapElement.website + '<br />' + 
 			mapElement.hours +
 			mapElement.bus + 
 			'<button ng-click="showMyLocation()" ' + 

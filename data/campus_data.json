@@ -19,7 +19,7 @@
     "hours":"",
     "bus":"",
     "phone":"(832) 548-5100",
-    "website":"</br><a href=\"http://www.legacycommunityhealth.org/\" target=\"_blank\">LegacyCommunityHealth.org/</a>",
+    "website":"<br /><a href=\"http://www.legacycommunityhealth.org/\" target=\"_blank\">LegacyCommunityHealth.org/</a>",
     "location":{
       "latitude":"29.744395",
       "longitude":"-95.383531"
@@ -29,10 +29,10 @@
     "name":"Covenant House",
     "type":"Youth Shelter",
     "street_address":"1111 Lovett Blvd",
-    "hours":"</br><b>Hours: </b>24/7</br>",
-    "bus":"METRO BUS 42, 81, 82, 36</br>",
+    "hours":"<br /><b>Hours: </b>24/7<br />",
+    "bus":"METRO BUS 42, 81, 82, 36<br />",
     "phone":"(713) 523-2231",
-    "website":"</br><a href=\"www.covenanthousetx.org/\" target=\"_blank\">www.covenanthousetx.org/</a>",
+    "website":"<br /><a href=\"www.covenanthousetx.org/\" target=\"_blank\">www.covenanthousetx.org/</a>",
     "location":{
       "latitude":"29.743111",
       "longitude":"-95.392995"
@@ -45,7 +45,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 533-4900",
-    "website":"</br><a href=\"https://www.imgh.org/\" target=\"_blank\">imgh.org/</a>",
+    "website":"<br /><a href=\"https://www.imgh.org/\" target=\"_blank\">imgh.org/</a>",
     "location":{
       "latitude":"29.740659",
       "longitude":"-95.377733"
@@ -81,10 +81,10 @@
     "name":"SEARCH",
     "type":"Housing",
     "street_address":"2505 Fanin",
-    "hours":"</br><b>Hours: </b>Mon-Fri 8-4pm</br></br>",
+    "hours":"<br /><b>Hours: </b>Mon-Fri 8-4pm<br /><br />",
     "bus":"",
     "phone":"(713) 739-7752",
-    "website":"</br><a href=\"www.searchhomeless.org\" target=\"_blank\">www.searchhomeless.org</a>",
+    "website":"<br /><a href=\"www.searchhomeless.org\" target=\"_blank\">www.searchhomeless.org</a>",
     "location":{
       "latitude":"29.745127",
       "longitude":"-95.372643"
@@ -123,7 +123,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 528-2121",
-    "website":"</br><a href=\"http://www.hawc.org/\" target=\"_blank\">http://www.hawc.org/</a>",
+    "website":"<br /><a href=\"http://www.hawc.org/\" target=\"_blank\">http://www.hawc.org/</a>",
     "location":{
       "latitude":"29.756935",
       "longitude":"-95.398591"
@@ -133,10 +133,10 @@
     "name":"Salvation Army Women and Family",
     "type":"Women's Resources",
     "street_address":"1603 McGowen",
-    "hours":"</br><b>Hours: </b>Mon-Fri 8-4:30pm</br>",
-    "bus":"METRO BUS 52</br>",
+    "hours":"<br /><b>Hours: </b>Mon-Fri 8-4:30pm<br />",
+    "bus":"METRO BUS 52<br />",
     "phone":"(713) 650-6530",
-    "website":"</br><a href=\"www.salvationarmyhouston.org/familyresidence\" target=\"_blank\">www.salvationarmyhouston.org/familyresidence</a>",
+    "website":"<br /><a href=\"www.salvationarmyhouston.org/familyresidence\" target=\"_blank\">www.salvationarmyhouston.org/familyresidence</a>",
     "location":{
       "latitude":"29.742321",
       "longitude":"-95.368302"
@@ -159,10 +159,10 @@
     "name":"Salvation Army Harbor Light",
     "type":"Emergency Shelter",
     "street_address":"2407 Main Street",
-    "hours":"</br><b>Hours: </b>Mon-Fri 8-4:30pm</br>",
-    "bus":"METRO RAIL</br>",
+    "hours":"<br /><b>Hours: </b>Mon-Fri 8-4:30pm<br />",
+    "bus":"METRO RAIL<br />",
     "phone":"713.224.2875",
-    "website":"</br><a href=\"www.salvationarmyhouston.org/harborlight\" target=\"_blank\">www.salvationarmyhouston.org/harborlight</a>",
+    "website":"<br /><a href=\"www.salvationarmyhouston.org/harborlight\" target=\"_blank\">www.salvationarmyhouston.org/harborlight</a>",
     "location":{
       "latitude":"29.746325",
       "longitude":"-95.373244"
@@ -175,7 +175,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 739-6968",
-    "website":"</br><a href=\"http://www.ridemetro.org/Services/RideStores_LostFound.aspx\" target=\"_blank\">RideMetro.org/Services/RideStores_LostFound.aspx</a>",
+    "website":"<br /><a href=\"http://www.ridemetro.org/Services/RideStores_LostFound.aspx\" target=\"_blank\">RideMetro.org/Services/RideStores_LostFound.aspx</a>",
     "location":{
       "latitude":"29.750124",
       "longitude":"-95.370987"
@@ -189,7 +189,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 860-4036",
-    "website":"</br><a href=\"http://www.temenoscdc.org/\" target=\"_blank\">http://TemenosCDC.org/</a>",
+    "website":"<br /><a href=\"http://www.temenoscdc.org/\" target=\"_blank\">http://TemenosCDC.org/</a>",
     "location":{
       "latitude":"29.745605",
       "longitude":"-95.365662"
@@ -216,7 +216,7 @@
     "hours":"",
     "bus":"",
     "phone":"(832) 393-1313",
-    "website":"</br><a href=\"http://www.houstonlibrary.org/home\" target=\"_blank\">HoustonLibrary.org/home</a>",
+    "website":"<br /><a href=\"http://www.houstonlibrary.org/home\" target=\"_blank\">HoustonLibrary.org/home</a>",
     "location":{
       "latitude":"29.759201",
       "longitude":"-95.370158"
@@ -229,7 +229,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 718-3199",
-    "website":"</br><a href=\"http://www.haul.org\" target=\"_blank\">Haul.org</a>",
+    "website":"<br /><a href=\"http://www.haul.org\" target=\"_blank\">Haul.org</a>",
     "location":{
       "latitude":"29.758567",
       "longitude":"-95.359540"
@@ -239,10 +239,10 @@
     "name":"The Beacon",
     "type":"all",
     "street_address":"1212 Prairie Street",
-    "hours":"</br><b>Hours: </b>Thur-Mon 7-3pm</br>",
-    "bus":"METRO BUS 37,48, 11, 20, 30, 52, 77, 80; METRO RAIL</br>",
+    "hours":"<br /><b>Hours: </b>Thur-Mon 7-3pm<br />",
+    "bus":"METRO BUS 37,48, 11, 20, 30, 52, 77, 80; METRO RAIL<br />",
     "phone":"(713) 220-9737",
-    "website":"</br><a href=\"http://www.chomhouston.org/default.aspx?name=chom.thebeacon\" target=\"_blank\">http://www.chomhouston.org/default.aspx?name=chom.thebeacon</a>",
+    "website":"<br /><a href=\"http://www.chomhouston.org/default.aspx?name=chom.thebeacon\" target=\"_blank\">http://www.chomhouston.org/default.aspx?name=chom.thebeacon</a>",
     "location":{
       "latitude":"29.759643",
       "longitude":"-95.360076"
@@ -252,8 +252,8 @@
     "name":"US Vets at the DeGeorge",
     "type":"Income",
     "street_address":"1418 Preston Street",
-    "hours":"</br><b>Hours: </b>Mon 8-2:30pm</br>Tue-Fri 8-5pm</br>Sat 8-4pm</br>Sun 9-4pm</br>",
-    "bus":"METRO BUS 37, 48, 11, 20, 30, 52, 77, 80; METRO RAIL</br>",
+    "hours":"<br /><b>Hours: </b>Mon 8-2:30pm<br />Tue-Fri 8-5pm<br />Sat 8-4pm<br />Sun 9-4pm<br />",
+    "bus":"METRO BUS 37, 48, 11, 20, 30, 52, 77, 80; METRO RAIL<br />",
     "phone":"(713) 229-8122",
     "website":"", 
     "location":{
@@ -265,10 +265,10 @@
     "name":"US Vets Initiative",
     "type":"Income",
     "street_address":"1418 Preston Street",
-    "hours":"</br><b>Hours: </b>24/7</br></br>",
+    "hours":"<br /><b>Hours: </b>24/7<br /><br />",
     "bus":"",
     "phone":"(713) 204-1838",
-    "website":"</br><a href=\"http://www.usvetsinc.org/houston\" target=\"_blank\">http://www.usvetsinc.org/houston</a>",
+    "website":"<br /><a href=\"http://www.usvetsinc.org/houston\" target=\"_blank\">http://www.usvetsinc.org/houston</a>",
     "location":{
       "latitude":"29.758912",
       "longitude":"-95.357414"
@@ -282,7 +282,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 224-1414",
-    "website":"</br><a href=\"http://www.newhopeHousing.com/about.html\" target=\"_blank\">NewHopeHousing.com/about.html</a>",
+    "website":"<br /><a href=\"http://www.newhopeHousing.com/about.html\" target=\"_blank\">NewHopeHousing.com/about.html</a>",
     "location":{
       "latitude":"29.759787",
       "longitude":"-95.356969"
@@ -292,10 +292,10 @@
     "name":"Star of Hope Mission (Men)",
     "type":"Emergency Shelter",
     "street_address":"1811 Ruiz Street",
-    "hours":"</br><b>Hours: </b>Mon-Sat 8-11am, 1-3pm; Sun 9-12pm, 1-3pm</br>",
-    "bus":"METRO BUS 3, 6, 11</br>",
+    "hours":"<br /><b>Hours: </b>Mon-Sat 8-11am, 1-3pm; Sun 9-12pm, 1-3pm<br />",
+    "bus":"METRO BUS 3, 6, 11<br />",
     "phone":"(713) 227-8900",
-    "website":"</br><a href=\"http://www.sohmission.org/NetCommunity/services-for-men\" target=\"_blank\">SOHMission.org/NetCommunity/services-for-men</a>",
+    "website":"<br /><a href=\"http://www.sohmission.org/NetCommunity/services-for-men\" target=\"_blank\">SOHMission.org/NetCommunity/services-for-men</a>",
     "location":{
       "latitude":"29.760523",
       "longitude":"-95.351434"
@@ -308,7 +308,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 224-1373",
-    "website":"</br><a href=\"http://www.mhihouston.org/LoavesAndFishes/index.html\" target=\"_blank\">MHIHouston.org/LoavesAndFishes/index.html</a>",
+    "website":"<br /><a href=\"http://www.mhihouston.org/LoavesAndFishes/index.html\" target=\"_blank\">MHIHouston.org/LoavesAndFishes/index.html</a>",
     "location":{
       "latitude":"29.757096",
       "longitude":"-95.351794"
@@ -321,7 +321,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 223-8889",
-    "website":"</br><a href=\"http://www.salvationarmyhouston.org/sallyshouse\" target=\"_blank\">SalvationArmyHouston.org/SallysHouse</a>",
+    "website":"<br /><a href=\"http://www.salvationarmyhouston.org/sallyshouse\" target=\"_blank\">SalvationArmyHouston.org/SallysHouse</a>",
     "location":{
       "latitude":"29.758411",
       "longitude":"-95.353866"
@@ -345,10 +345,10 @@
     "name":"Star of Hope (Women and families)",
     "type":"Emergency Shelter",
     "street_address":"419 Dowling",
-    "hours":"</br><b>Hours: </b>Intake 8:30-2:30pm</br>",
-    "bus":"METRO BUS 50</br>",
+    "hours":"<br /><b>Hours: </b>Intake 8:30-2:30pm<br />",
+    "bus":"METRO BUS 50<br />",
     "phone":"(713) 222-2220",
-    "website":"</br><a href=\"http://www.sohmission.org/NetCommunity/wf-intake\" target=\"_blank\">http://www.sohmission.org/NetCommunity/wf-intake</a>",
+    "website":"<br /><a href=\"http://www.sohmission.org/NetCommunity/wf-intake\" target=\"_blank\">http://www.sohmission.org/NetCommunity/wf-intake</a>",
     "location":{
       "latitude":"29.753592",
       "longitude":"-95.349013"
@@ -362,7 +362,7 @@
     "hours":"",
     "bus":"",
     "phone":"(713) 224-2522",
-    "website":"</br><a href=\"http://www.stmartha.com/index.cfm?load=page&page=218\" target=\"_blank\">http://www.stmartha.com/index.cfm?load=page&page=218</a>",
+    "website":"<br /><a href=\"http://www.stmartha.com/index.cfm?load=page&page=218\" target=\"_blank\">http://www.stmartha.com/index.cfm?load=page&page=218</a>",
     "location":{
       "latitude":"29.760559",
       "longitude":"-95.343991"
