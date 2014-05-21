@@ -292,6 +292,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	$scope.glueToMap = function(latLngStr){
+		zoomOutMap();
+	
 		latLngArray = latLngStr.split(", ");
 		var latitude = parseFloat(latLngArray[0].substr(1));
 		var longitude = parseFloat(latLngArray[1].substr(0,latLngArray[1].length-1));
