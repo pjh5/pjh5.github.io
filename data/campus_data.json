@@ -1,7 +1,7 @@
 [
   {
     "name":"Lord of the Streets",
-    "type":"Food",
+    "type":"Food, Medical, Mail",
     "street_address":"3401 Fannin",
     "hours":"",
     "bus":"",
@@ -198,7 +198,7 @@
 
   {
     "name":"Bread of Life",
-    "type":"all",
+    "type":"Food, Medical, Housing",
     "street_address":"1703 Gray Street",
     "hours":"",
     "bus":"",
@@ -237,7 +237,7 @@
   },
   {
     "name":"The Beacon",
-    "type":"all",
+    "type":"Food, Showers, Job Search, ",
     "street_address":"1212 Prairie Street",
     "hours":"<br /><b>Hours: </b>Thur-Mon 7-3pm<br />",
     "bus":"METRO BUS 37,48, 11, 20, 30, 52, 77, 80; METRO RAIL<br />",
