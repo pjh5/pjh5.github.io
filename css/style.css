@@ -32,6 +32,13 @@ html, body, #map-canvas {
 .dropdown{
   position:relative;
 }
+
+.dropdown-toggle{
+	position:absolute;
+	right:82px;
+	width:86px;
+}
+
 /**
  * Lookahead
  */

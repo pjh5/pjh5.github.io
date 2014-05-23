@@ -176,8 +176,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.website + '<br />' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<button ng-click="showMyLocation()" ' + 
-					// 'id="' + latLng.toString() + '" ' +
+			'<button ng-click="showMyLocation()" ' +
 					'class="btn btn-default">' +
 			'Glue to Map</button>' +
 			'</div>'; // Added content to info thing
@@ -314,3 +313,14 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
  
 
 });
+
+
+// .directive( 'glueBtn', function( $compile ){
+	// return {
+		// scope: {
+			// latLng: "="
+		// },
+		// link: function ( scope, element, attrs ) {
+			// var elmnt;
+			// attrs.$observe( 'template', function (
+// });
