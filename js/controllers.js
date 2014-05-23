@@ -268,9 +268,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             marker.setMap(map);
         
         }
-		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            $scope.showAll();
-        });
+		// var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
+            // $scope.showAll();
+        // });
     }
 
 
