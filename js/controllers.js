@@ -161,7 +161,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
     // places a marker on the map for a map element.
     function placeMarker(mapElement, withInfoWindow) {
         // check whether we've made the maker yet. If not, make it.
-		console.log('placeMarker');
         var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
         if (!(latLng in latLngDict)) {
             var marker = new google.maps.Marker({
@@ -315,6 +314,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
 })
 
 .directive( 'compileData', function ( $compile ) {
+	console.log('directive');
   return {
     scope: true,
     link: function ( scope, element, attrs ) {
@@ -336,6 +336,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
 })
 
 .factory( 'tempService', function () {
+	console.log('factory');
   return function () { 
     return '<button type="button" class="btn btn-default" ng-click="glueToMap()">Glue to Map</button>';
   };
