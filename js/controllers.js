@@ -176,7 +176,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
 			mapElement.website + '<br />' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<div compile-data template="{{<button type="button" class="btn btn-default" ng-click="glueToMap()">Glue to Map</button>}}"></div>' +
+			'<button type="button" class="btn btn-default" ng-click="glueToMap()">Glue to Map</button>' +
 			'</div>'; // Added content to info thing
 			
 			var infoWindow = new google.maps.InfoWindow({
