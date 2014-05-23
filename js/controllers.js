@@ -161,6 +161,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
     // places a marker on the map for a map element.
     function placeMarker(mapElement, withInfoWindow) {
         // check whether we've made the maker yet. If not, make it.
+		console.log('placeMarker');
         var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
         if (!(latLng in latLngDict)) {
             var marker = new google.maps.Marker({
