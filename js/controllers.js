@@ -336,13 +336,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
 
 .factory( 'tempService', function () {
   return function () { 
-    return '<td contenteditable><input type="text" class="editBox" value=""/></td>'+ 
-            '<td contenteditable><input type="text" class="editBox" value=""/></td>'+
-             '<td>'+
-                '<span>'+
-         '<button id="createHost" class="btn btn-mini btn-success" data-ng-click="create()"><b>Create</b></button>'+
-              '</span>'+
-            '</td>';
+    return '<button type="button" class="btn btn-default" ng-click="glueToMap()">Glue to Map</button>';
   };
 });
 
