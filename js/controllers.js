@@ -2,7 +2,7 @@ var mapApp = angular.module('mapApp', []);
 var directionsService;
 var directionsDisplay;
 var stepDisplay;
-mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
+mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempService) {
     // init function for body.
     directionsService = new google.maps.DirectionsService();
 
@@ -306,9 +306,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 		
 	}
 	
-	$scope.newTransaction= tempService(){
-		return '<div>Something weird happened</div>'
-		}
+	$scope.newTransaction= tempService();
 
 
  
