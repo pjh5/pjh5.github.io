@@ -288,7 +288,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	
-	$scope.glueButton = glueButtonService();
 	
 	$scope.glueToMap = function(latLngStr){
 		zoomOutMap('undefined');
@@ -310,6 +309,39 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
  
 
+})
+
+.directive( 'compileData', function ( $compile ) {
+  return {
+    scope: true,
+    link: function ( scope, element, attrs ) {
+
+      var elmnt;
+
+      attrs.$observe( 'template', function ( myTemplate ) {
+        if ( angular.isDefined( myTemplate ) ) {
+          // compile the provided template against the current scope
+          elmnt = $compile( myTemplate )( scope );
+
+            element.html(""); // dummy "clear"
+
+          element.append( elmnt );
+        }
+      });
+    }
+  };
+})
+
+.factory( 'tempService', function () {
+  return function () { 
+    return '<td contenteditable><input type="text" class="editBox" value=""/></td>'+ 
+            '<td contenteditable><input type="text" class="editBox" value=""/></td>'+
+             '<td>'+
+                '<span>'+
+         '<button id="createHost" class="btn btn-mini btn-success" data-ng-click="create()"><b>Create</b></button>'+
+              '</span>'+
+            '</td>';
+  };
 });
 
 
