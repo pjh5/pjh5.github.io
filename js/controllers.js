@@ -288,7 +288,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	
-	$scope.glueButton = glueButtonService()
+	$scope.glueButton = glueButtonService();
 	
 	$scope.glueToMap = function(latLngStr){
 		zoomOutMap('undefined');
