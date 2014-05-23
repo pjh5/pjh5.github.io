@@ -176,7 +176,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.website + '<br />' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<compile-data template="{{glueButton}}"></compile-data>' +
+			'<button ng-click="showMyLocation()" ' +
+					'class="btn btn-default">' +
+			'Glue to Map</button>' +
 			'</div>'; // Added content to info thing
 			
 			var infoWindow = new google.maps.InfoWindow({
@@ -288,7 +290,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	
 	
-	$scope.glueButton = glueButtonService();
 	
 	$scope.glueToMap = function(latLngStr){
 		zoomOutMap('undefined');
@@ -298,8 +299,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 		var longitude = parseFloat(latLngArray[1].substr(0,latLngArray[1].length-1));
 		var latLng = new google.maps.LatLng(latitude, longitude);
 		
-
+        latLngDict[latLng].marker.setMap(null);
 		delete latLngDict[latLng];
+		gluedMarkers.push(latLng);
 		
 		
 		// change marker color
@@ -310,32 +312,15 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
  
 
-})
-
-
-.directive( 'compileData', function ( $compile ) {
-  return {
-    scope: true,
-	
-	link: function ( scope, element, attrs ) {
-
-      var elmnt;
-
-      attrs.$observe( 'template', function ( myTemplate ) {
-        if ( angular.isDefined( myTemplate ) ) {
-          // compile the provided template against the current scope
-          elmnt = $compile( myTemplate )( scope );
-
-            element.html(""); // dummy "clear"
-
-          element.append( elmnt );
-        }
-      });
-    }
-  };
-})
-.factory( 'glueButtonService', function () {
-  return function () { 
-    return '<button type="button" class="btn btn-default" ng-click="showMyLocation()">Glue to Map</button>';
-  };
 });
+
+
+// .directive( 'glueBtn', function( $compile ){
+	// return {
+		// scope: {
+			// latLng: "="
+		// },
+		// link: function ( scope, element, attrs ) {
+			// var elmnt;
+			// attrs.$observe( 'template', function (
+// });
