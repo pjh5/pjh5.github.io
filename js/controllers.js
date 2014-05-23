@@ -306,7 +306,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 		
 	}
 	
-	$scope.newTransaction= tempService()
+	$scope.newTransaction= tempService(){
+		return '<div>Something weird happened</div>'
+		}
 
 
  
