@@ -189,7 +189,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
                 var dictEntry = latLngDict[target.latLng];
                 dictEntry.infoWindow.open(map, dictEntry.marker);
             }); 
-			$scope.tempService();
+			tempService();
 			
         }
         var dictEntry = latLngDict[latLng];
