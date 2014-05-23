@@ -176,7 +176,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			mapElement.website + '<br />' + 
 			mapElement.hours +
 			mapElement.bus + 
-			'<compile-data template="{{glueButton}}"></compile-data>' +
+			// '<compile-data template="{{glueButton}}"></compile-data>' +
 			'</div>'; // Added content to info thing
 			
 			var infoWindow = new google.maps.InfoWindow({
@@ -305,12 +305,12 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 		// change marker color
 		
 		
-	}
+	};
 
 
  
 
-})
+});
 
 
 // .directive( 'compileData', function ( $compile ) {
