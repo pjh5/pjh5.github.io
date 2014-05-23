@@ -16,11 +16,6 @@ html, body, #map-canvas {
 
   background-color: black;
   width: 100%;
-  
-  text-align:center;
-  color:white;
-  font-size:18px;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 .navbar-left .form-group{
