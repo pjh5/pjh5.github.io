@@ -313,29 +313,29 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 })
 
 
-.directive( 'compileData', function ( $compile ) {
-  return {
-    scope: true,
+// .directive( 'compileData', function ( $compile ) {
+  // return {
+    // scope: true,
 	
-	link: function ( scope, element, attrs ) {
+	// link: function ( scope, element, attrs ) {
 
-      var elmnt;
+      // var elmnt;
 
-      attrs.$observe( 'template', function ( myTemplate ) {
-        if ( angular.isDefined( myTemplate ) ) {
-          // compile the provided template against the current scope
-          elmnt = $compile( myTemplate )( scope );
+      // attrs.$observe( 'template', function ( myTemplate ) {
+        // if ( angular.isDefined( myTemplate ) ) {
+          // // compile the provided template against the current scope
+          // elmnt = $compile( myTemplate )( scope );
 
-            element.html(""); // dummy "clear"
+            // element.html(""); // dummy "clear"
 
-          element.append( elmnt );
-        }
-      });
-    }
-  };
-})
-.factory( 'glueButtonService', function () {
-  return function () { 
-    return '<button type="button" class="btn btn-default" ng-click="showMyLocation()">Glue to Map</button>';
-  };
-});
+          // element.append( elmnt );
+        // }
+      // });
+    // }
+  // };
+// })
+// .factory( 'glueButtonService', function () {
+  // return function () { 
+    // return '<button type="button" class="btn btn-default" ng-click="showMyLocation()">Glue to Map</button>';
+  // };
+// });
