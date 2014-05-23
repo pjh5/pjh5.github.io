@@ -24,8 +24,12 @@ html, body, #map-canvas {
 
 .navbar-right{
   position:absolute;
-  /*margin-right: -10px;*/
   margin-left: 80%;
+  
+  text-align: right;
+  color: white;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
   
 }
 
