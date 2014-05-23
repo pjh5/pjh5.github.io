@@ -16,6 +16,13 @@ html, body, #map-canvas {
 
   background-color: black;
   width: 100%;
+  }
+  
+.navbar-title{
+  text-align:left;
+  color: white;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .navbar-left .form-group{
@@ -99,16 +106,14 @@ html, body, #map-canvas {
   display: inline-block;
   background-color: #ffffff !important;
   position: absolute;
-  width: 100px;
-  right: 0;
+  width: 80px;
+  right: 1px;
 }
 
-.visitor-lots-button {
-  display: inline-block;
-  background-color: #ffffff !important;
+.print-button {
   position: absolute;
-  width: 100px;
-  right: 100px;
+  right: 1px;
+  bottom:1px;
 }
 
 .clear-input-button {
