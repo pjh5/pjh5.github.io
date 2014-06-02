@@ -339,7 +339,7 @@ mapApp.factory('Map', function($rootScope , $compile){
 						return function(){
 							scope.mapElement = latLngDict(localLatLng);
 							scope.$apply();
-							infoWindow.setContent(compiled[0].innerHTML);
+							infoWindow.setContent(compiled[0]);
 							infoWindow.open(Map, marker);
 						} // anonymous function that addListener returns
 					})(marker, scope, compiled, scope.markers[i].locations)
