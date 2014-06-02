@@ -164,20 +164,20 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
         var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
         if (!(latLng in latLngDict)) {
             var marker = new google.maps.Marker({
-                position: latLng,
-                map: map,
-                title: mapElement.name
+						position: latLng,
+						map: map,
+						title: mapElement.name
             });
 			
 			var contentString = '<div id="' + mapElement.name.replace(/\s+/g, '') + '">'+
-			'<b>' + mapElement.name + '</b><br />' + 
-			mapElement.street_address + '<br />' +
-			mapElement.phone + 
-			mapElement.website + '<br />' + 
-			mapElement.hours +
-			mapElement.bus + 
-			<div compile-data template="{{}}"></div>' +
-			'</div>'; // Added content to info thing
+								'<b>' + mapElement.name + '</b><br />' + 
+								mapElement.street_address + '<br />' +
+								mapElement.phone + 
+								mapElement.website + '<br />' + 
+								mapElement.hours +
+								mapElement.bus + 
+								<div compile-data template="{{}}"></div>' +
+								'</div>'; // Added content to info thing
 			
 			var infoWindow = new google.maps.InfoWindow({
 				content: contentString
@@ -286,26 +286,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             delete latLngDict[latLng];
         }
     }
-	
-	
-	
-	
-	$scope.glueToMap = function(latLngStr){
-		zoomOutMap('undefined');
-	
-		latLngArray = latLngStr.split(", ");
-		var latitude = parseFloat(latLngArray[0].substr(1));
-		var longitude = parseFloat(latLngArray[1].substr(0,latLngArray[1].length-1));
-		var latLng = new google.maps.LatLng(latitude, longitude);
-		
-
-		delete latLngDict[latLng];
-		
-		
-		// change marker color
-		
-		
-	}
 
 
  
