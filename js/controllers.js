@@ -144,9 +144,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
     $scope.focusResource = function(resource) {
         // hide keyboard so that the user will have a centered pin.
         $('searchBox').blur();
-
-        // first remove all markers.
-        removeAllMarkers();
 		
 		// clear search bar
         $scope.searchText = "";
@@ -194,11 +191,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
             google.maps.event.addListener(marker, 'click', function(target){
                 var dictEntry = latLngDict[target.latLng];
 				var infoWindow = new google.maps.InfoWindow({content: contentString});
-				console.log($scope);
-				console.log(infoWindow.content);
-				$scope.$compile(infoWindow.content)($scope);
+				$compile(infoWindow.content)($scope);
                 infoWindow.open(map, dictEntry.marker);
-				console.log(infoWindow.content);
             }); 
 			
         }
@@ -232,6 +226,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         searcher = new Fuse(result.data, options);
 
         mapElements = result.data;
+		console.log(result);
+		console.log('========================================================================================');
+		console.log(mapElements);
 
         
     });
@@ -318,7 +315,40 @@ mapApp.factory('Map', function($rootScope , $compile){
 	
 		return {
 			init:function( mapElements , scope) {
+				var Map = $rootScope.map
 				scope.markers = [];
+				
+				for(var count = mapElements.length, i = 0; i < count; i++) {
+					var resource = mapElements[i],
+						latlng = resource.location;
+						marker = new google.maps.Marker({
+								position: new google.maps.LatLng(latlng[0], latlng[1]),
+								map: Map,
+								title: resource.name}),
+						infoWindow = new google.maps.InfoWindow();
+				
+					scope.markers[i] = {};
+					scope.markers[i].location = [ latlng[0], latlng[1] ];
+					
+					var content = '<div id="' + resource.name.replace(/\s+/g, '') + '">' +
+									'ng-include src="\'infoWindow.html\'">' + 
+									'</div>'// Added content to info thing
+					var compiledContent = $compile(content)(scope);
+					
+					(google.maps.event.addListener(marker, 'click', function(marker, scope, compiledContent, localLatLng){
+						return function(){
+							scope.mapElement = latLngDict(localLatLng);
+							scope.$apply();
+							infoWindow.setContent(compiled[0].innerHTML);
+							infoWindow.open(Map, marker);
+						} // anonymous function that addListener returns
+					})(marker, scope, compiled, scope.markers[i].locations)
+					); //addListener
+					
+					
+					
+					
+				} // for all resources
 			} // init
 		} // return
 }); //factory
