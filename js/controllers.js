@@ -253,6 +253,7 @@ mapApp.factory('Map', function($rootScope , $compile){
 								title: resource.name}),
 						infoWindow = new google.maps.InfoWindow();
 				
+					marker.setMap(Map);
 					scope.markers[i] = {};
 					scope.markers[i].location = [ latlng[0], latlng[1] ];
 					
