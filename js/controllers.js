@@ -176,6 +176,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 								mapElement.website + '<br />' + 
 								mapElement.hours +
 								mapElement.bus + 
+								
+								'<button class="btn btn-default" ng-click="glueToMap()">' +
+									'Glue to Map' +
+								'</button>' +
+								
 								'</div>'; // Added content to info thing
 			
 			var infoWindow = new google.maps.InfoWindow({
@@ -268,9 +273,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             marker.setMap(map);
         
         }
-		// var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            // $scope.showAll();
-        // });
+		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
+            $scope.showAll();
+        });
     }
 
 
