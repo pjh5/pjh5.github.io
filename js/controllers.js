@@ -301,7 +301,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 		console.log("Called glueToMap function!!");
 	}
 	
-	$scope.unglue() = function(){
+	$scope.unglue = function(){
 		console.log("Called unglue function!!");
 	}
 
