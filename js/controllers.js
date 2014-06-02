@@ -2,7 +2,7 @@ var mapApp = angular.module('mapApp', []);
 var directionsService;
 var directionsDisplay;
 var stepDisplay;
-mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
+mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $compile) {
     // init function for body.
     directionsService = new google.maps.DirectionsService();
 
@@ -191,6 +191,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 			var infoWindow = new google.maps.InfoWindow({
 				content: contentString
 			});
+			
+			$compile(infoWindow)($scope);
 
             // add entry to latLngDict.
             latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
