@@ -194,7 +194,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
             latLngDict[latLng] = {"marker":marker};
             google.maps.event.addListener(marker, 'click', function(target){
                 var dictEntry = latLngDict[target.latLng];
-				var infoWindow = new google.maps.InfoWindow(content: contentString);
+				var infoWindow = new google.maps.InfoWindow({content: contentString});
 				$scope.$apply();
 				$compile(infoWindow)($scope);
                 dictEntry.infoWindow.open(map, dictEntry.marker);
