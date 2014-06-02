@@ -176,7 +176,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 								mapElement.website + '<br />' + 
 								mapElement.hours +
 								mapElement.bus + 
-								<div compile-data template="{{}}"></div>' +
 								'</div>'; // Added content to info thing
 			
 			var infoWindow = new google.maps.InfoWindow({
