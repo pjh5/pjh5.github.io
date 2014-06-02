@@ -310,10 +310,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
  
 
-}) 
-
-
-.factory('Map', function($rootScope , $compile){
+}).factory('Map', function($rootScope , $compile){
 	
 		return {
 			init:function( mapElements , scope) {
