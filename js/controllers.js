@@ -310,11 +310,14 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
  
 
-}).factory('Map', function($rootScope , $compile){
+});
+
+
+mapApp.factory('Map', function($rootScope , $compile){
 	
 		return {
 			init:function( mapElements , scope) {
 				scope.markers = [];
 			} // init
 		} // return
-}; //factory
+}); //factory
