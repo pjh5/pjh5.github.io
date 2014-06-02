@@ -197,7 +197,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 				var infoWindow = new google.maps.InfoWindow({content: contentString});
 				$scope.$apply();
 				$compile(infoWindow)($scope);
-                dictEntry.infoWindow.open(map, dictEntry.marker);
+                infoWindow.open(map, dictEntry.marker);
+				console.log(infoWindow)
 				console.log(dictEntry.marker);
             }); 
 			
