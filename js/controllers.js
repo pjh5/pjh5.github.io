@@ -168,7 +168,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 						map: map,
 						title: mapElement.name
             });
-			console.log(latLng);
 			
 			var contentString = '<div id="' + mapElement.name.replace(/\s+/g, '') + '">'+
 								'<b>' + mapElement.name + '</b><br />' + 
@@ -196,10 +195,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
                 var dictEntry = latLngDict[target.latLng];
 				var infoWindow = new google.maps.InfoWindow({content: contentString});
 				$scope.$apply();
-				$compile(infoWindow.innerHTML)($scope);
+				$compile(infoWindow.content)($scope);
                 infoWindow.open(map, dictEntry.marker);
 				console.log(infoWindow)
-				console.log(dictEntry.marker);
             }); 
 			
         }
