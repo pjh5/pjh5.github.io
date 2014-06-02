@@ -188,21 +188,17 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 								'</div>' +
 								
 								'</div>'; // Added content to info thing
-			
-			var compiledContentString = $compile(contentString)($scope);
-			console.log(compiledContentString[0].innerHTML);
-			
-			var infoWindow = new google.maps.InfoWindow({
-				content: compiledContentString[0].innerHTML
-			});
-			
-			console.log(infoWindow);
+								
 
             // add entry to latLngDict.
-            latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
+            latLngDict[latLng] = {"marker":marker};
             google.maps.event.addListener(marker, 'click', function(target){
                 var dictEntry = latLngDict[target.latLng];
+				var infoWindow = new google.maps.InfoWindow(content: contentString);
+				$scope.$apply();
+				$compile(infoWindow)($scope);
                 dictEntry.infoWindow.open(map, dictEntry.marker);
+				console.log(dictEntry.marker);
             }); 
 			
         }
