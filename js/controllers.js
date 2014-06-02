@@ -310,4 +310,4 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 
  
 
-})
+});
