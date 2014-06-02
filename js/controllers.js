@@ -295,6 +295,15 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
             delete latLngDict[latLng];
         }
     }
+	
+	
+	$scope.glueToMap = function(){
+		console.log("Called glueToMap function!!");
+	}
+	
+	$scope.unglue() = function(){
+		console.log("Called unglue function!!");
+	};
 
 
  
