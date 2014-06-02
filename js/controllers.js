@@ -206,8 +206,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         };
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-        
-        }
+			
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
             $scope.showAll();
         });
