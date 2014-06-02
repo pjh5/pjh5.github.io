@@ -177,9 +177,14 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 								mapElement.hours +
 								mapElement.bus + 
 								
-								'<button class="btn btn-default" ng-click="glueToMap()">' +
-									'Glue to Map' +
-								'</button>' +
+								'<div class="btn-group">' +
+									'<button class="btn btn-default" ng-click="glueToMap()">' +
+										'Glue to Map' +
+									'</button>' +
+									'<button class="btn btn-default" ng-click="unglue()">' +
+										'Unglue' +
+									'</button>' +
+								'</div>' +
 								
 								'</div>'; // Added content to info thing
 			
