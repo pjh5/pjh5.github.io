@@ -303,7 +303,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
 	
 	$scope.unglue() = function(){
 		console.log("Called unglue function!!");
-	};
+	}
 
 
  
