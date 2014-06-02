@@ -207,6 +207,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
 			
+        for (var latLng in latLngDict){
+            var marker = new google.maps.Marker()({position:latLng});
+            marker.setMap(map);
+			}
+			
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
             $scope.showAll();
         });
@@ -253,7 +258,6 @@ mapApp.factory('Map', function($rootScope , $compile){
 								title: resource.name}),
 						infoWindow = new google.maps.InfoWindow();
 				
-					marker.setMap(Map);
 					scope.markers[i] = {};
 					scope.markers[i].location = [ latlng[0], latlng[1] ];
 					
