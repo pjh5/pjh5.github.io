@@ -2,7 +2,7 @@ var mapApp = angular.module('mapApp', []);
 var directionsService;
 var directionsDisplay;
 var stepDisplay;
-mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempService) {
+mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     // init function for body.
     directionsService = new google.maps.DirectionsService();
 
@@ -189,7 +189,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
                 var dictEntry = latLngDict[target.latLng];
                 dictEntry.infoWindow.open(map, dictEntry.marker);
             }); 
-			tempService();
 			
         }
         var dictEntry = latLngDict[latLng];
@@ -307,67 +306,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, tempS
 		
 		
 	}
-	
-	$scope.newTransaction= tempService();
 
 
  
 
 })
-
-.directive( 'compileData', function ( $compile ) {
-	console.log('directive');
-  return {
-    scope: true,
-    link: function ( scope, element, attrs ) {
-
-      var elmnt;
-
-      attrs.$observe( 'template', function ( myTemplate ) {
-        if ( angular.isDefined( myTemplate ) ) {
-          // compile the provided template against the current scope
-          elmnt = $compile( myTemplate )( scope );
-
-            element.html(""); // dummy "clear"
-
-          element.append( elmnt );
-        }
-      });
-    }
-  };
-})
-
-.factory( 'tempService', function () {
-	console.log('factory');
-  return function () { 
-    return '<button type="button" class="btn btn-default" ng-click="glueToMap()">Glue to Map</button>';
-  };
-});
-
-
-// .directive( 'compileData', function ( $compile ) {
-  // return {
-    // scope: true,
-	
-	// link: function ( scope, element, attrs ) {
-
-      // var elmnt;
-
-      // attrs.$observe( 'template', function ( myTemplate ) {
-        // if ( angular.isDefined( myTemplate ) ) {
-          // // compile the provided template against the current scope
-          // elmnt = $compile( myTemplate )( scope );
-
-            // element.html(""); // dummy "clear"
-
-          // element.append( elmnt );
-        // }
-      // });
-    // }
-  // };
-// })
-// .factory( 'glueButtonService', function () {
-  // return function () { 
-    // return '<button type="button" class="btn btn-default" ng-click="showMyLocation()">Glue to Map</button>';
-  // };
-// });
