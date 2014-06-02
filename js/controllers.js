@@ -194,10 +194,10 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
             google.maps.event.addListener(marker, 'click', function(target){
                 var dictEntry = latLngDict[target.latLng];
 				var infoWindow = new google.maps.InfoWindow({content: contentString});
-				$scope.$apply();
+				console.log(infoWindow.content);
 				$compile(infoWindow.content)($scope);
                 infoWindow.open(map, dictEntry.marker);
-				console.log(infoWindow)
+				console.log(infoWindow.content);
             }); 
 			
         }
