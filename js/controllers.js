@@ -194,8 +194,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
             google.maps.event.addListener(marker, 'click', function(target){
                 var dictEntry = latLngDict[target.latLng];
 				var infoWindow = new google.maps.InfoWindow({content: contentString});
+				console.log($scope);
 				console.log(infoWindow.content);
-				$compile(infoWindow.content)($scope);
+				$scope.$compile(infoWindow.content)($scope);
                 infoWindow.open(map, dictEntry.marker);
 				console.log(infoWindow.content);
             }); 
@@ -254,6 +255,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
      * Add code for initializing the map.
      */
     function initializeMap() {
+		console.log($scope);
         var mapOptions = {
           zoom: 14,
           center: mapCenter,
