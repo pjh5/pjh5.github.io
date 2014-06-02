@@ -2,7 +2,7 @@ var mapApp = angular.module('mapApp', []);
 var directionsService;
 var directionsDisplay;
 var stepDisplay;
-mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $compile) {
+mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     // init function for body.
     directionsService = new google.maps.DirectionsService();
 
@@ -187,15 +187,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 								'</div>' +
 								
 								'</div>'; // Added content to info thing
-								
-			contentString.append($compile('<div class="btn-group">' +
-											'<button class="btn btn-default" ng-click="glueToMap()">' +
-												'Glue to Map' +
-											'</button>' +
-											'<button class="btn btn-default" ng-click="unglue()">' +
-												'Unglue' +
-											'</button>' +
-											'</div>') ($scope) );
 			
 			var infoWindow = new google.maps.InfoWindow({
 				content: contentString
