@@ -161,9 +161,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
     // places a marker on the map for a map element.
     function placeMarker(mapElement, withInfoWindow) {
         // check whether we've made the maker yet. If not, make it.
-        var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
+        latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
         if (!(latLng in latLngDict)) {
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
 						position: latLng,
 						map: map,
 						title: mapElement.name
@@ -188,11 +188,13 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 								
 								'</div>'; // Added content to info thing
 			
+			var compiledContentString = $compile(contentString)(scope);
+			
 			var infoWindow = new google.maps.InfoWindow({
-				content: contentString
+				content: compiledContentString
 			});
 			
-			$compile(infoWindow)($scope);
+			$compile(infoWindow.content)($scope);
 
             // add entry to latLngDict.
             latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
