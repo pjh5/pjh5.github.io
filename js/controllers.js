@@ -193,8 +193,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 			var infoWindow = new google.maps.InfoWindow({
 				content: compiledContentString
 			});
-			
-			$compile(infoWindow.content)($scope);
 
             // add entry to latLngDict.
             latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
@@ -312,4 +310,14 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
  
 
-});
+}) 
+
+
+.factory('Map', function($rootScope , $compile){
+	
+		return {
+			init:function( mapElements , scope) {
+				scope.markers = [];
+			} // init
+		} // return
+}; //factory
