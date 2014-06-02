@@ -55,7 +55,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
 	// Called when a resource type in the Resources dropdown is clicked
 	$scope.showResources = function(resourceType){
-		removeAllMarkers();
+		closeAllWindows();
 		var newMapElems = [];
 		var newCenter = 0;
 		var bounds = new google.maps.LatLngBounds();
@@ -64,7 +64,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 			if (~mapElem.type.indexOf(resourceType)){
 				var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
 				bounds.extend(latLng);
-				placeMarker(mapElem);
+				latLngDict[latLng].infoWindow.open(map, latLngDict[latLng].marker);
 			}
 		}
 		map.fitBounds(bounds);
@@ -73,15 +73,13 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 	
 	
     $scope.showAll = function(){
-		removeAllMarkers();
+		closeAllWindows();
         var newMapElems = [];
         var bounds = new google.maps.LatLngBounds();
         for (var i=0, size = mapElements.length; i < size; i++ ){
             var mapElem = mapElements[i];
             var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
             bounds.extend(latLng);
-            placeMarker(mapElem, false);
-           
             } 
         map.fitBounds(bounds);
     }
@@ -148,72 +146,14 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 		// clear search bar
         $scope.searchText = "";
 
-        // map.setZoom(5);
-        var latLng = new google.maps.LatLng(resource.location.latitude, resource.location.longitude);
+        map.setZoom(5);
+        var latLng = new google.maps.LatLng(resource.location.latitude, resource.location.longitude),
+			mapElem = latLngDict[latLng];
         map.panTo(latLng);
 
-        placeMarker(resource)
+        closeAllWindows();
+		mapElem.infoWindow.open(map, mapElem.marker);
     };
-
-    // places a marker on the map for a map element.
-    function placeMarker(mapElement, withInfoWindow) {
-        // check whether we've made the maker yet. If not, make it.
-        latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
-        if (!(latLng in latLngDict)) {
-            marker = new google.maps.Marker({
-						position: latLng,
-						map: map,
-						title: mapElement.name
-            });
-			
-			var contentString = '<div id="' + mapElement.name.replace(/\s+/g, '') + '">'+
-								'<b>' + mapElement.name + '</b><br />' + 
-								mapElement.street_address + '<br />' +
-								mapElement.phone + 
-								mapElement.website + '<br />' + 
-								mapElement.hours +
-								mapElement.bus + 
-								
-								'<div class="btn-group">' +
-									'<button class="btn btn-default" ng-click="glueToMap()">' +
-										'Glue to Map' +
-									'</button>' +
-									'<button class="btn btn-default" ng-click="unglue()">' +
-										'Unglue' +
-									'</button>' +
-								'</div>' +
-								
-								'</div>'; // Added content to info thing
-								
-
-            // add entry to latLngDict.
-            latLngDict[latLng] = {"marker":marker};
-            google.maps.event.addListener(marker, 'click', function(target){
-                var dictEntry = latLngDict[target.latLng];
-				var infoWindow = new google.maps.InfoWindow({content: contentString});
-				$compile(infoWindow.content)($scope);
-                infoWindow.open(map, dictEntry.marker);
-            }); 
-			
-        }
-        var dictEntry = latLngDict[latLng];
-		
-		if (typeof withInfoWindow === 'undefined' || withInfoWindow === true){
-			dictEntry.infoWindow.open(map, dictEntry.marker);
-		}
-    };
-
-
-
-    var removeMarker = function(mapElement) {
-        // check whether we've made the maker yet. If it exists, remove it.
-        var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
-        if (latLng in latLngDict) {
-            // delete marker and entry in latLngDict.
-            latLngDict[latLng].marker.setMap(null);
-            delete latLngDict[latLng];
-        }
-    }
 
     // load in the campus data json via a HTTP GET request.
     $http.get('data/campus_data.json').then(function(result) {
@@ -226,9 +166,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         searcher = new Fuse(result.data, options);
 
         mapElements = result.data;
-		console.log(result);
-		console.log('========================================================================================');
-		console.log(mapElements);
 
         
     });
@@ -252,7 +189,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
      * Add code for initializing the map.
      */
     function initializeMap() {
-		console.log($scope);
         var mapOptions = {
           zoom: 14,
           center: mapCenter,
@@ -270,12 +206,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         };
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-        for (var element in mapElements){
-            placeMarker(element);
-            }
-        for (var latLng in latLngDict){
-            var marker = new google.maps.Marker()({position:latLng});
-            marker.setMap(map);
         
         }
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
@@ -285,14 +215,11 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
 
     /**
-     * Removes all markers from the map.
+     * Closes all info windows on the map
      */
-    function removeAllMarkers() {
-        $scope.visitorLotsShown = false;
-
+    function closeAllWindows() {
         for (var latLng in latLngDict) {
-            latLngDict[latLng].marker.setMap(null);
-            delete latLngDict[latLng];
+            latLngDict[latLng].infoWindow.close();
         }
     }
 	
@@ -329,6 +256,8 @@ mapApp.factory('Map', function($rootScope , $compile){
 				
 					scope.markers[i] = {};
 					scope.markers[i].location = [ latlng[0], latlng[1] ];
+					
+					latLngDict[latlng] = {'marker': marker, 'infoWindow': infoWindow};
 					
 					var content = '<div id="' + resource.name.replace(/\s+/g, '') + '">' +
 									'ng-include src="\'infoWindow.html\'">' + 
