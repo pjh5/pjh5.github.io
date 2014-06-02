@@ -188,7 +188,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 								
 								'</div>'; // Added content to info thing
 			
-			var compiledContentString = $compile(contentString)(scope);
+			var compiledContentString = $compile(contentString)($scope);
 			
 			var infoWindow = new google.maps.InfoWindow({
 				content: compiledContentString
