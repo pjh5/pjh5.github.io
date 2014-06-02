@@ -168,6 +168,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 						map: map,
 						title: mapElement.name
             });
+			console.log(latLng);
 			
 			var contentString = '<div id="' + mapElement.name.replace(/\s+/g, '') + '">'+
 								'<b>' + mapElement.name + '</b><br />' + 
@@ -189,11 +190,13 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 								'</div>'; // Added content to info thing
 			
 			var compiledContentString = $compile(contentString)($scope);
-			console.log(compiledContentString[0]);
+			console.log(compiledContentString[0].innerHTML);
 			
 			var infoWindow = new google.maps.InfoWindow({
-				content: compiledContentString[0]
+				content: compiledContentString[0].innerHTML
 			});
+			
+			console.log(infoWindow);
 
             // add entry to latLngDict.
             latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
