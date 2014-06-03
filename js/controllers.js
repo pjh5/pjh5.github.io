@@ -168,7 +168,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
         mapElements = result.data;
 		
-		map.init(mapElements, $scope);
+		Map.init(mapElements, $scope);
 
         
     });
