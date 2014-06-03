@@ -167,6 +167,8 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         searcher = new Fuse(result.data, options);
 
         mapElements = result.data;
+		
+		map.init(mapElements, $scope);
 
         
     });
@@ -208,15 +210,15 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         };
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			
-		console.log(mapElements);
-		for (var mapElem in mapElements){
-			var latLng = new google.maps.LatLng(mapElem.Location.latitude, mapElem.Location.longitude),
-				marker = new google.maps.Marker({
-								position: latLng,
-								map: Map,
-								title: resource.name});
-			latLngDict[latLng] = {'marker': marker};
-		}
+		// console.log(mapElements);
+		// for (var mapElem in mapElements){
+			// var latLng = new google.maps.LatLng(mapElem.Location.latitude, mapElem.Location.longitude),
+				// marker = new google.maps.Marker({
+								// position: latLng,
+								// map: Map,
+								// title: resource.name});
+			// latLngDict[latLng] = {'marker': marker};
+		// }
 			
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
             $scope.showAll();
