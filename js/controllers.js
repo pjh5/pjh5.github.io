@@ -1,5 +1,4 @@
-var mapApp = angular.module('mapApp', ['services']);
-mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, MapFactory) {
+function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
     // init function for body.
     $scope.init = function(){
         // makes sure that the height is always equal to the height for the device.
