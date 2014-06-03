@@ -28,7 +28,7 @@ app.factory('MapFactory', function($rootScope , $compile){
 				
 				for(var count = mapElements.length, i = 0; i < count; i++) {
 					var resource = mapElements[i],
-						latlng = resource.location;
+						latlng = new google.maps.LatLng(resource.Location.latitude, resource.Location.longitude),
 						marker = new google.maps.Marker({
 								position: new google.maps.LatLng(latlng[0], latlng[1]),
 								map: Map,
