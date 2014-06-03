@@ -1,11 +1,6 @@
-var mapApp = angular.module('mapApp', []);
-var directionsService;
-var directionsDisplay;
-var stepDisplay;
+var mapApp = angular.module('mapApp', ['services']);
 mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, MapFactory) {
     // init function for body.
-    directionsService = new google.maps.DirectionsService();
-
     $scope.init = function(){
         // makes sure that the height is always equal to the height for the device.
         $('body').css({"height":document.documentElement.clientHeight});
