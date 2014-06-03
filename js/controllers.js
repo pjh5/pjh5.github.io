@@ -7,7 +7,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
     directionsService = new google.maps.DirectionsService();
 
     $scope.init = function(){
-        initializeMap();
         // makes sure that the height is always equal to the height for the device.
         $('body').css({"height":document.documentElement.clientHeight});
     };
@@ -168,7 +167,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
         mapElements = result.data;
 		
-		Map.init(mapElements, $scope);
+		MapFactory.init(mapElements, $scope);
 
         
     });
@@ -193,22 +192,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
      */
     function initializeMap() {
 		console.log("initializeMap()");
-        var mapOptions = {
-          zoom: 14,
-          center: mapCenter,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          disableDefaultUI: false,
-          panControl: false,
-          mapTypeControl: false,
-          zoomControl: true,
-          zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.LARGE,
-                position: google.maps.ControlPosition.LEFT_CENTER
-          },
-          minZoom: 4,
-          maxZoom: 25
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        
 			
 		// console.log(mapElements);
 		// for (var mapElem in mapElements){
@@ -219,10 +203,6 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 								// title: resource.name});
 			// latLngDict[latLng] = {'marker': marker};
 		// }
-			
-		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
-            $scope.showAll();
-        });
     }
 
 
@@ -250,11 +230,28 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 });
 
 
-mapApp.factory('Map', function($rootScope , $compile){
+mapApp.factory('MapFactory', function($rootScope , $compile){
 		return {
 			init:function( mapElements , scope) {
 				console.log("Calling factory init");
-				var Map = $rootScope.map
+				
+				var mapOptions = {
+					  zoom: 14,
+					  center: mapCenter,
+					  mapTypeId: google.maps.MapTypeId.ROADMAP,
+					  disableDefaultUI: false,
+					  panControl: false,
+					  mapTypeControl: false,
+					  zoomControl: true,
+					  zoomControlOptions: {
+							style: google.maps.ZoomControlStyle.LARGE,
+							position: google.maps.ControlPosition.LEFT_CENTER
+					  },
+					  minZoom: 4,
+					  maxZoom: 25
+					};
+				
+				var Map = $rootScope.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 				scope.markers = [];
 				
 				for(var count = mapElements.length, i = 0; i < count; i++) {
