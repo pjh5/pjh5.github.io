@@ -210,7 +210,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 		for (var mapElem in mapElements){
 			var latLng = new google.maps.LatLng(mapElem.Location.latitude, mapElem.Location.longitude),
 				marker = new google.maps.Marker({
-								position: latLng
+								position: latLng,
 								map: Map,
 								title: resource.name});
 			latLngDict[latLng] = {'marker': marker};
