@@ -38,7 +38,7 @@ app.factory('MapFactory', function($rootScope , $compile){
 					scope.markers[i] = {};
 					scope.markers[i].location = [ latlng[0], latlng[1] ];
 					
-					latLngDict[latlng] = {'marker': marker, 'infoWindow': infoWindow};
+					scope.latLngDict[latlng] = {'marker': marker, 'infoWindow': infoWindow};
 					
 					var content = '<div id="' + resource.name.replace(/\s+/g, '') + '">' +
 									'ng-include src="\'infoWindow.html\'">' + 
@@ -47,7 +47,7 @@ app.factory('MapFactory', function($rootScope , $compile){
 					
 					(google.maps.event.addListener(marker, 'click', function(marker, scope, compiledContent, localLatLng){
 						return function(){
-							scope.mapElement = latLngDict(localLatLng);
+							scope.mapElement = scope.latLngDict(localLatLng);
 							scope.$apply();
 							infoWindow.setContent(compiled[0]);
 							infoWindow.open(Map, marker);
