@@ -221,4 +221,4 @@ function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
 
  
 
-});
+};
