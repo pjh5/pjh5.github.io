@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('services', []);
 
 app.factory('MapFactory', function($rootScope , $compile){
