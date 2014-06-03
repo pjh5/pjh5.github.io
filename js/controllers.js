@@ -189,7 +189,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
      * Add code for initializing the map.
      */
     function initializeMap() {
-		console.log("initializeMap()";
+		console.log("initializeMap()");
         var mapOptions = {
           zoom: 14,
           center: mapCenter,
@@ -205,8 +205,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
           minZoom: 4,
           maxZoom: 25
         };
-        map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 			
 		for (var mapElem in mapElements){
 			var latLng = new google.maps.LatLng(mapElem.Location.latitude, mapElem.Location.longitude),
