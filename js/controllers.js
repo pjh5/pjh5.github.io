@@ -158,6 +158,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
     // load in the campus data json via a HTTP GET request.
     $http.get('data/campus_data.json').then(function(result) {
         // set the fuse searcher.
+		console.log("Calling http.get()");
         var options = {
           keys: ['name', 'type'],
 		  threshold: 0.4
