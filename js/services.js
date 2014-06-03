@@ -9,7 +9,7 @@ app.factory('MapFactory', function($rootScope , $compile){
 				
 				var mapOptions = {
 					  zoom: 14,
-					  center: new google.maps.LatLng(29.752658, -95.360209),
+					  center: scope.mapCenter,
 					  mapTypeId: google.maps.MapTypeId.ROADMAP,
 					  disableDefaultUI: false,
 					  panControl: false,
