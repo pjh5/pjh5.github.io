@@ -189,6 +189,7 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
      * Add code for initializing the map.
      */
     function initializeMap() {
+		console.log("initializeMap()";
         var mapOptions = {
           zoom: 14,
           center: mapCenter,
@@ -207,10 +208,14 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
 			
-        for (var latLng in latLngDict){
-            var marker = new google.maps.Marker()({position:latLng});
-            marker.setMap(map);
-			}
+		for (var mapElem in mapElements){
+			var latLng = new google.maps.LatLng(mapElem.Location.latitude, mapElem.Location.longitude),
+				marker = new google.maps.Marker({
+								position: latLng
+								map: Map,
+								title: resource.name});
+			latLngDict[latLng] = {'marker': marker};
+		}
 			
 		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
             $scope.showAll();
@@ -243,9 +248,9 @@ mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout, $comp
 
 
 mapApp.factory('Map', function($rootScope , $compile){
-	
 		return {
 			init:function( mapElements , scope) {
+				console.log("Calling factory init");
 				var Map = $rootScope.map
 				scope.markers = [];
 				
