@@ -1,6 +1,13 @@
-function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
+var mapApp = angular.module('mapApp', []);
+var directionsService;
+var directionsDisplay;
+var stepDisplay;
+mapApp.controller('SearchCtrl', function($scope, $http, $window, $timeout) {
     // init function for body.
+    directionsService = new google.maps.DirectionsService();
+
     $scope.init = function(){
+        initializeMap();
         // makes sure that the height is always equal to the height for the device.
         $('body').css({"height":document.documentElement.clientHeight});
     };
@@ -48,7 +55,7 @@ function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
 
 	// Called when a resource type in the Resources dropdown is clicked
 	$scope.showResources = function(resourceType){
-		closeAllWindows();
+		removeAllMarkers();
 		var newMapElems = [];
 		var newCenter = 0;
 		var bounds = new google.maps.LatLngBounds();
@@ -57,7 +64,7 @@ function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
 			if (~mapElem.type.indexOf(resourceType)){
 				var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
 				bounds.extend(latLng);
-				latLngDict[latLng].infoWindow.open(map, latLngDict[latLng].marker);
+				placeMarker(mapElem);
 			}
 		}
 		map.fitBounds(bounds);
@@ -66,13 +73,15 @@ function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
 	
 	
     $scope.showAll = function(){
-		closeAllWindows();
+		removeAllMarkers();
         var newMapElems = [];
         var bounds = new google.maps.LatLngBounds();
         for (var i=0, size = mapElements.length; i < size; i++ ){
             var mapElem = mapElements[i];
             var latLng = new google.maps.LatLng(mapElem.location.latitude, mapElem.location.longitude);
             bounds.extend(latLng);
+            placeMarker(mapElem, false);
+           
             } 
         map.fitBounds(bounds);
     }
@@ -133,25 +142,77 @@ function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
 
     // function for focusing on a resource.
     $scope.focusResource = function(resource) {
+		console.log(resource);
+	
         // hide keyboard so that the user will have a centered pin.
         $('searchBox').blur();
+
+        // first remove all markers.
+        removeAllMarkers();
 		
 		// clear search bar
         $scope.searchText = "";
 
-        map.setZoom(5);
-        var latLng = new google.maps.LatLng(resource.location.latitude, resource.location.longitude),
-			mapElem = latLngDict[latLng];
+        // map.setZoom(5);
+        var latLng = new google.maps.LatLng(resource.location.latitude, resource.location.longitude);
         map.panTo(latLng);
 
-        closeAllWindows();
-		mapElem.infoWindow.open(map, mapElem.marker);
+        placeMarker(resource)
     };
+
+    // places a marker on the map for a map element.
+    function placeMarker(mapElement, withInfoWindow) {
+        // check whether we've made the maker yet. If not, make it.
+        var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
+        if (!(latLng in latLngDict)) {
+            var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                title: mapElement.name
+            });
+			
+			var contentString = '<div id="' + mapElement.name.replace(/\s+/g, '') + '">'+
+			'<b>' + mapElement.name + '</b><br />' + 
+			mapElement.street_address + '<br />' +
+			mapElement.phone + 
+			mapElement.website + '<br />' + 
+			mapElement.hours +
+			mapElement.bus + 
+			'</div>'; // Added content to info thing
+			
+			var infoWindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+
+            // add entry to latLngDict.
+            latLngDict[latLng] = {"marker":marker, "infoWindow":infoWindow};
+            google.maps.event.addListener(marker, 'click', function(target){
+                var dictEntry = latLngDict[target.latLng];
+                dictEntry.infoWindow.open(map, dictEntry.marker);
+            }); 
+        }
+        var dictEntry = latLngDict[latLng];
+		
+		if (typeof withInfoWindow === 'undefined' || withInfoWindow === true){
+			dictEntry.infoWindow.open(map, dictEntry.marker);
+		}
+    };
+
+
+
+    var removeMarker = function(mapElement) {
+        // check whether we've made the maker yet. If it exists, remove it.
+        var latLng = new google.maps.LatLng(mapElement.location.latitude, mapElement.location.longitude);
+        if (latLng in latLngDict) {
+            // delete marker and entry in latLngDict.
+            latLngDict[latLng].marker.setMap(null);
+            delete latLngDict[latLng];
+        }
+    }
 
     // load in the campus data json via a HTTP GET request.
     $http.get('data/campus_data.json').then(function(result) {
         // set the fuse searcher.
-		console.log("Calling http.get()");
         var options = {
           keys: ['name', 'type'],
 		  threshold: 0.4
@@ -160,8 +221,6 @@ function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
         searcher = new Fuse(result.data, options);
 
         mapElements = result.data;
-		
-		MapFactory.init(mapElements, $scope);
 
         
     });
@@ -185,40 +244,50 @@ function SearchCtrl($scope, $http, $window, $timeout, MapFactory) {
      * Add code for initializing the map.
      */
     function initializeMap() {
-		console.log("initializeMap()");
+        var mapOptions = {
+          zoom: 14,
+          center: mapCenter,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: false,
+          panControl: false,
+          mapTypeControl: false,
+          zoomControl: true,
+          zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.LARGE,
+                position: google.maps.ControlPosition.LEFT_CENTER
+          },
+          minZoom: 4,
+          maxZoom: 25
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+        for (var element in mapElements){
+            placeMarker(element);
+            }
+        for (var latLng in latLngDict){
+            var marker = new google.maps.Marker()({position:latLng});
+            marker.setMap(map);
         
-			
-		// console.log(mapElements);
-		// for (var mapElem in mapElements){
-			// var latLng = new google.maps.LatLng(mapElem.Location.latitude, mapElem.Location.longitude),
-				// marker = new google.maps.Marker({
-								// position: latLng,
-								// map: Map,
-								// title: resource.name});
-			// latLngDict[latLng] = {'marker': marker};
-		// }
+        }
+		var listener = google.maps.event.addListenerOnce(map, 'idle', function(){
+            $scope.showAll();
+        });
     }
 
 
     /**
-     * Closes all info windows on the map
+     * Removes all markers from the map.
      */
-    function closeAllWindows() {
+    function removeAllMarkers() {
+        $scope.visitorLotsShown = false;
+
         for (var latLng in latLngDict) {
-            latLngDict[latLng].infoWindow.close();
+            latLngDict[latLng].marker.setMap(null);
+            delete latLngDict[latLng];
         }
     }
-	
-	
-	$scope.glueToMap = function(){
-		console.log("Called glueToMap function!!");
-	}
-	
-	$scope.unglue = function(){
-		console.log("Called unglue function!!");
-	}
 
 
  
 
-};
+});
